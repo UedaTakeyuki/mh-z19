@@ -1,7 +1,7 @@
 # mh-z19
 Read CO2 concentration from mh-z19 sensor&amp; send to [MONITOR](https://monitor.uedasoft.com) server
 
-![Monitor](https://camo.qiitausercontent.com/a270df1162ed5c3bf9968b24064b91eed0dfcc11/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e616d617a6f6e6177732e636f6d2f302f34363534342f31353739663964622d306634302d373665382d303566332d3939336132346334376431382e706e67)
+![MH-Z19](https://camo.qiitausercontent.com/a270df1162ed5c3bf9968b24064b91eed0dfcc11/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e616d617a6f6e6177732e636f6d2f302f34363534342f31353739663964622d306634302d373665382d303566332d3939336132346334376431382e706e67)
 
 ## install
 download from [release](https://github.com/UedaTakeyuki/mh-z19/releases)
@@ -18,6 +18,9 @@ Setup environment & install prerequired modules by
 ```
 ./setup.sh 
 ```
+## cabling
+Connect RPi & mh-z19 as follows:
+![Cabling](https://camo.qiitausercontent.com/112ad5fe41c82a16671d2882070384109c8860cc/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e616d617a6f6e6177732e636f6d2f302f34363534342f30383238333031342d363864322d633364652d313634342d3763386439623762363266642e6a706567)
 
 ## set view_id
 Make sure your view_id on your account of the MONITOR, let's say it was ABCDEF, set it by setid.sh as
