@@ -26,27 +26,30 @@ Make sure your view_id on your account of the MONITOR, let's say it was ABCDEF, 
 ./setid.sh ABCDEF
 ```
 
-## test
+## test for getting CO2 Sensor value
 
 ```
-./view.sh
+sudo python mh_z19.py
+```
+
+In case succeeded, espected response is as follows:
+
+```
+pi@raspberrypi:~/mh-z19 $ sudo python mh_z19.py
+{'co2': 420}
 ```
 
 In case everything succeeded, expected response is consist of the log of taking photo, sending it, and {"ok":true} as follows:
 
+or, return ```None``` in case 
+- Cabling between RPi & sensor is not correct.
+- Sensor is no work.
+- ***setup*** mentioned before is not finished, or not rebooted after setup.
+
+## test for sending CO2 Sensor value
+
 ```
---- Opening /dev/video0...
-Trying source module v4l2...
-/dev/video0 opened.
-No input was specified, using the first.
-Delaying 1 seconds.
---- Capturing frame...
-Skipping 20 frames...
-Capturing 1 frames...
-Captured 21 frames in 0.67 seconds. (31 fps)
---- Processing captured image...
-Writing JPEG image to '/tmp/20180823190339.jpg'.
-{"ok":true}
+sudo python read.py
 ```
 
 In case something wrong, response finished with {"ok":false,"reason":"XXX"}. For Example:
@@ -107,4 +110,4 @@ Unit view.service could not be found.
 ```
 
 ### Q&A
-Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/view/issues) without hesitation! 
+Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/mh-z19/issues) without hesitation! 
