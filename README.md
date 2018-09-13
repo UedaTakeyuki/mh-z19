@@ -19,7 +19,11 @@ Setup environment & install prerequired modules by
 ./setup.sh 
 ```
 
-For reference, the sensor value of mh-z19 is read by ***Serial*** protocol and the way to activate serial is depend of ***the model of RPi***. This seems to make some confusion for bigginer. But, in this project, these difference is solved by pre required proggram installed by ***setup.sh*** and ***mh_z19.py*** itself which will be described later. So, no need to consern about which model of RPi you are useing.
+Just for reference, mh-z19 use ***UART*** and the way to activate UART is depend on ***the model of RPi***. Sometimes this seems to make some confusion for bigginer.
+
+In this project, these difference is solved by pre required proggram installed by ***setup.sh*** and inner logic on ***mh_z19.py*** which will be described later.
+
+So, You don't need to take care which model of RPi you are useing.
 
 ## cabling
 Connect RPi & mh-z19 as:
