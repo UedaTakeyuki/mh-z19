@@ -18,6 +18,9 @@ Setup environment & install prerequired modules by
 ```
 ./setup.sh 
 ```
+
+For reference, the sensor value of mh-z19 is read by ***Serial*** protocol and the way to activate serial is depend of ***the model of RPi***. This seems to make some confusion for bigginer. But, in this project, these difference is solved by pre required proggram installed by ***setup.sh*** and ***mh_z19.py*** itself which will be described later. So, no need to consern about which model of RPi you are useing.
+
 ## cabling
 Connect RPi & mh-z19 as:
 
@@ -91,18 +94,9 @@ or, return ```None``` in case
 ```
 sudo python read.py
 ```
-
-In case something wrong, response finished with {"ok":false,"reason":"XXX"}. For Example:
-
-```
-{"ok":false,"reason":"ViewID not valid"}
-```
-
-In case, you should make sure if correct view_is was set by setid.sh command.
-
 ## setting for automatically run view.sh at 5 minute interval
 
-You can do it both by setting crontab if you're used to do so, or you can use autostart.sh command as follows:
+You can do it both by setting crontab if you're used to do so, or you can use ***autostart.sh*** command as follows:
 
 ```
 # set autostart on
@@ -121,32 +115,20 @@ sudo systemctl status view.service
 
 In case view.service is running, you can see the log of current status and taking & sending photo as follows:
 ```
-pi@raspberrypi:~/view-v_1.1.1 $ sudo systemctl status view.service 
+pi@raspberrypi:~/mh-z19-v_1.0.0 $ sudo systemctl status view.service 
 ● view.service - Take photos & Post to the monitor
-   Loaded: loaded (/home/pi/view-v_1.1.1/view.service; enabled; vendor preset: e
+   Loaded: loaded (/home/pi/mh-z19-v_1.0.0/mh_z19.service; enabled; vendor preset: e
    Active: active (running) since Thu 2018-08-23 19:07:24 JST; 4min 40s ago
  Main PID: 777 (loop.sh)
    CGroup: /system.slice/view.service
-           ├─777 /bin/bash /home/pi/view-v_1.1.1/loop.sh
+           ├─777 /bin/bash /home/pi/mh-z19-v_1.0.0/loop.sh
            └─820 sleep 5m
-
-Aug 23 19:07:26 raspberrypi loop.sh[777]: --- Capturing frame...
-Aug 23 19:07:26 raspberrypi loop.sh[777]: Skipping 20 frames...
-Aug 23 19:07:28 raspberrypi loop.sh[777]: Capturing 1 frames...
-Aug 23 19:07:28 raspberrypi loop.sh[777]: Captured 21 frames in 1.73 seconds. (1
-Aug 23 19:07:28 raspberrypi loop.sh[777]: --- Processing captured image...
-Aug 23 19:07:29 raspberrypi loop.sh[777]: Writing JPEG image to '/tmp/2018082319
-Aug 23 19:07:29 raspberrypi loop.sh[777]:   % Total    % Received % Xferd  Avera
-Aug 23 19:07:29 raspberrypi loop.sh[777]:                                  Dload
-Aug 23 19:07:53 raspberrypi loop.sh[777]: [2.0K blob data]
-Aug 23 19:07:53 raspberrypi loop.sh[777]:      0
-lines 1-18/18 (END)
 ```
 
 In case afte service set as off, you can see followings:
 ```
-pi@raspberrypi:~/view-v_1.1.1 $ sudo systemctl status view.service 
-Unit view.service could not be found.
+pi@raspberrypi:~/mh-z19-v_1.0.0 $ sudo systemctl status mh_z19.service 
+Unit mh_z19.service could not be found.
 ```
 
 ### Q&A
