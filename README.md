@@ -19,9 +19,9 @@ Setup environment & install prerequired modules by
 ./setup.sh 
 ```
 
-Just for reference, mh-z19 use ***UART*** and the way to activate UART is depend on ***the model of RPi***. Sometimes this seems to make some confusion for bigginer.
+Just for your reference, the digital interface of mh-z19 is ***UART*** and the way to activate UART on the Raspberry Pi is depend on ***the model of RPi***. Sometimes this seems to make some confusion for bigginer.
 
-In this project, these difference is solved by pre required proggram installed by ***setup.sh*** and inner logic on ***mh_z19.py*** which will be described later.
+So, ***setup.sh*** install a python module ***getrpimodel*** to provide the feature of recognizing ***which modle of Raspberry Pi*** for the python module for handle mh-19 sensor ***mh_z19.py*** which will be described later.
 
 So, You don't need to take care which model of RPi you are useing.
 
