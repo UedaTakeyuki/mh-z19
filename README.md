@@ -94,11 +94,15 @@ or, return ```None``` in case
 - Sensor is no work.
 - ***setup*** mentioned before is not finished, or not rebooted after setup.
 
-## test for sending CO2 Sensor value
+## test for sending CO2 Sensor value to MONITOR™
 
 ```
 sudo python read.py
 ```
+
+Result
+![MONITOR™](https://2.bp.blogspot.com/-3JhqCyKvdK0/W5oZgTLwKbI/AAAAAAAAAqU/1CIp2FM8mokAK7n-YNE5wO8YRN6bj9NDQCEwYBhgL/s1600/%25E3%2582%25B9%25E3%2582%25AF%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%25B3%25E3%2582%25B7%25E3%2583%25A7%25E3%2583%2583%25E3%2583%2588%2B2018-09-13%2B17.01.33.png)
+
 ## setting for automatically run view.sh at 5 minute interval
 
 You can do it both by setting crontab if you're used to do so, or you can use ***autostart.sh*** command as follows:
