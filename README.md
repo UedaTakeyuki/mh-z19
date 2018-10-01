@@ -69,8 +69,8 @@ pi@raspberrypi:~/mh-z19 $ gpio readall
  +-----+-----+---------+------+---+---Pi B+--+---+------+---------+-----+-----+
 ```
 
-## set view_id
-Make sure your view_id on your account of the MONITOR, let's say it was ABCDEF, set it by setid.sh as
+## set value_id
+Make sure your value_id on your account of the MONITOR, let's say it was ABCDEF, set it by setid.sh as
 
 ```
 ./setid.sh ABCDEF
