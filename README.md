@@ -3,33 +3,6 @@ Read CO2 concentration from mh-z19 sensor&amp; send to [MONITOR](https://monitor
 
 ![MH-Z19](https://camo.qiitausercontent.com/a270df1162ed5c3bf9968b24064b91eed0dfcc11/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e616d617a6f6e6177732e636f6d2f302f34363534342f31353739663964622d306634302d373665382d303566332d3939336132346334376431382e706e67)
 
-## Install & Settup
-
-### Full Install
-Install full packages to read mh-z19 sensor, to handle the value to save, send and so on, and to make systemctl service with following steps:
-
-download from [release](https://github.com/UedaTakeyuki/mh-z19/releases)
-
-or 
-
-```
-git clone https://github.com/UedaTakeyuki/mh-z19.git
-```
-
-Then,
-
-```
-./setup.sh 
-```
-
-### Install only sensor module
-
-```bash:
-pip install pip install mh-z19
-```
-
-Please refer [PyPi top page](https://pypi.org/project/mh-z19/) for detail.
-
 ## cabling
 Connect RPi & mh-z19 as:
 
@@ -70,6 +43,33 @@ pi@raspberrypi:~/mh-z19 $ gpio readall
  | BCM | wPi |   Name  | Mode | V | Physical | V | Mode | Name    | wPi | BCM |
  +-----+-----+---------+------+---+---Pi B+--+---+------+---------+-----+-----+
 ```
+
+## Install & Settup
+
+### Full Install
+Install full packages to read mh-z19 sensor, to handle the value to save, send and so on, and to make systemctl service with following steps:
+
+download from [release](https://github.com/UedaTakeyuki/mh-z19/releases)
+
+or 
+
+```
+git clone https://github.com/UedaTakeyuki/mh-z19.git
+```
+
+Then,
+
+```
+./setup.sh 
+```
+
+### Install only sensor module
+
+```bash:
+pip install pip install mh-z19
+```
+
+Please refer [PyPi top page](https://pypi.org/project/mh-z19/) for detail.
 
 ## read CO2 Sensor value
 ```
