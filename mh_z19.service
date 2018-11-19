@@ -4,7 +4,7 @@ Description=Get temp, humid, and humiditydeficit data & Post to the monitor
 After=rc-local.service
 [Service]
 WorkingDirectory=/home/pi/mh-z19
-ExecStart=
+ExecStart=/usr/bin/sudo /usr/bin/python -m pondslider
 Restart=always
 #RestartSec=90
 RestartSec=30
