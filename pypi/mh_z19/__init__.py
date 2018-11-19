@@ -43,7 +43,3 @@ def read():
   p = subprocess.call(start_getty, stdout=subprocess.PIPE, shell=True)
   if result is not None:
     return result
-
-if __name__ == '__main__':
-  value = read()
-  print value

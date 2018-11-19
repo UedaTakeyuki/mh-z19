@@ -1,0 +1,9 @@
+[[sensors]]
+  handler = "mh_z19"
+  [[sensors.values]]
+    name = "co2"
+    handlers = [
+#      "send2monitor", # with send2monitor.ini on the current directory.
+#      "handlers.value.sender.send2m2x", # with send2m2x.ini on the handler/value/sender/send2m2x
+      "handlers.value.saver.save2strage"
+  ]

@@ -15,5 +15,4 @@ if [ $# -ne 1 ]; then
   usage
 fi
 
-sed -i "s/^co2=.*/co2=$1/" read.ini
-sed -i "s#^ExecStart=.*#ExecStart=`pwd`/loop.sh#" mh_z19.service
+sed -i "s/^co2=.*/co2=$1/" send2monitor.ini

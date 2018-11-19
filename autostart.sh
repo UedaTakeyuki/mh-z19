@@ -19,11 +19,12 @@ usage_exit(){
 	echo "Usage: $0 [--on]/[--off]" 1>&2
   echo "  [--on]:               Set autostart as ON. " 			1>&2
   echo "  [--off]:              Set autostart as OFF. " 		1>&2
+  echo "  [--status]:           Show current status. " 		  1>&2
   exit 1
 }
 
 on(){
-	sed -i "s@^ExecStart=.*@ExecStart=${SCRIPT_DIR}/loop.sh@" ${CMD}.service
+	sed -i "s@^WorkingDirectory=.*@WorkingDirectory=${SCRIPT_DIR}@" ${CMD}.service
 	sudo ln -s ${SCRIPT_DIR}\/${CMD}.service /etc/systemd/system/${CMD}.service
 	sudo systemctl daemon-reload
 	sudo systemctl enable ${CMD}.service
@@ -35,6 +36,9 @@ off(){
 	sudo systemctl disable ${CMD}.service
 }
 
+status(){
+	sudo systemctl status ${CMD}.service
+}
 while getopts ":-:" OPT
 do
   case $OPT in
@@ -45,6 +49,9 @@ do
 								;;
 					off)
 								off
+								;;
+					status)
+								status
 								;;
 				esac
 				;;

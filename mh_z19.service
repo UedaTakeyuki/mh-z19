@@ -3,12 +3,13 @@
 Description=Get temp, humid, and humiditydeficit data & Post to the monitor
 After=rc-local.service
 [Service]
-ExecStart=/home/pi/mh-z19/loop.sh
+WorkingDirectory=/home/pi/mh-z19
+ExecStart=
 Restart=always
 #RestartSec=90
 RestartSec=30
 Type=simple
-PIDFile=/var/run/dht22.pid
+PIDFile=/var/run/mh-z19.pid
 [Install]
 WantedBy=multi-user.target
 

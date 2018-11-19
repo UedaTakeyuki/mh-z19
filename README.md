@@ -3,9 +3,11 @@ Read CO2 concentration from mh-z19 sensor&amp; send to [MONITOR](https://monitor
 
 ![MH-Z19](https://camo.qiitausercontent.com/a270df1162ed5c3bf9968b24064b91eed0dfcc11/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e616d617a6f6e6177732e636f6d2f302f34363534342f31353739663964622d306634302d373665382d303566332d3939336132346334376431382e706e67)
 
-You can buy mh-z19 sensor at online shop like <a target="_self" href="http://rover.ebay.com/rover/1/711-53200-19255-0/1?icep_ff3=2&pub=5575391936&toolid=10001&campid=5338307275&customid=&icep_item=183008290612&ipn=psmain&icep_vectorid=229466&kwid=902099&mtid=824&kw=lg">eBay</a><img style="text-decoration:none;border:0;padding:0;margin:0;" src="http://rover.ebay.com/roverimp/1/711-53200-19255-0/1?ff3=2&pub=5575391936&toolid=10001&campid=5338307275&customid=&item=183008290612&mpt=[CACHEBUSTER]"> or <a href="https://ja.aliexpress.com/wholesale?catId=0&amp;initiative_id=SB_20180912235649&amp;SearchText=mh-z19">aliexpress</a> about 20$.
+## Install & Settup
 
-## install
+### Full Install
+Install full packages to read mh-z19 sensor, to handle the value to save, send and so on, and to make systemctl service with following steps:
+
 download from [release](https://github.com/UedaTakeyuki/mh-z19/releases)
 
 or 
@@ -14,18 +16,19 @@ or
 git clone https://github.com/UedaTakeyuki/mh-z19.git
 ```
 
-## setup
-Setup environment & install prerequired modules by
+Then,
 
 ```
 ./setup.sh 
 ```
 
-Just for your reference, the digital interface of mh-z19 is ***UART*** and the way to activate UART on the Raspberry Pi is depend on ***the model of RPi***. Sometimes this seems to make some confusion for bigginer.
+### Install only sensor module
 
-So, ***setup.sh*** install a python module ***getrpimodel*** to provide the feature of recognizing ***which modle of Raspberry Pi*** for the python module for handle mh-19 sensor ***mh_z19.py*** which will be described later.
+```bash:
+pip install pip install mh-z19
+```
 
-So, You don't need to take care which model of RPi you are useing.
+Please refer [PyPi top page](https://pypi.org/project/mh-z19/) for detail.
 
 ## cabling
 Connect RPi & mh-z19 as:
@@ -36,7 +39,6 @@ Connect RPi & mh-z19 as:
 
 Followings are example of cabling, but you can free to use other 5v and 0v Pin on the RPi. 
 
-
 ![Cabling](https://camo.qiitausercontent.com/112ad5fe41c82a16671d2882070384109c8860cc/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e616d617a6f6e6177732e636f6d2f302f34363534342f30383238333031342d363864322d633364652d313634342d3763386439623762363266642e6a706567)
 
 ```
@@ -45,10 +47,10 @@ pi@raspberrypi:~/mh-z19 $ gpio readall
  | BCM | wPi |   Name  | Mode | V | Physical | V | Mode | Name    | wPi | BCM |
  +-----+-----+---------+------+---+----++----+---+------+---------+-----+-----+
  |     |     |    3.3v |      |   |  1 || 2  |   |      | 5v      |     |     |
- |   2 |   8 |   SDA.1 |   IN | 1 |  3 || 4  |   |      | 5v      |     |     |  <---- with Vin on mh-z19
- |   3 |   9 |   SCL.1 |   IN | 1 |  5 || 6  |   |      | 0v      |     |     |  <---- with Gnd on mh-z19
- |   4 |   7 | GPIO. 7 |   IN | 1 |  7 || 8  | 1 | ALT0 | TxD     | 15  | 14  |  <---- with RxD on mh-z19
- |     |     |      0v |      |   |  9 || 10 | 1 | ALT0 | RxD     | 16  | 15  |  <---- with TxD on mh-z19
+ |   2 |   8 |   SDA.1 |   IN | 1 |  3 || 4  |   |      | 5v      |     |     |  <---- Vin
+ |   3 |   9 |   SCL.1 |   IN | 1 |  5 || 6  |   |      | 0v      |     |     |  <---- Gnd
+ |   4 |   7 | GPIO. 7 |   IN | 1 |  7 || 8  | 1 | ALT0 | TxD     | 15  | 14  |  <---- RxD
+ |     |     |      0v |      |   |  9 || 10 | 1 | ALT0 | RxD     | 16  | 15  |  <---- TxD
  |  17 |   0 | GPIO. 0 |   IN | 0 | 11 || 12 | 0 | IN   | GPIO. 1 | 1   | 18  |
  |  27 |   2 | GPIO. 2 |   IN | 0 | 13 || 14 |   |      | 0v      |     |     |
  |  22 |   3 | GPIO. 3 |   IN | 0 | 15 || 16 | 0 | IN   | GPIO. 4 | 4   | 23  |
@@ -69,81 +71,79 @@ pi@raspberrypi:~/mh-z19 $ gpio readall
  +-----+-----+---------+------+---+---Pi B+--+---+------+---------+-----+-----+
 ```
 
-## set value_id
-Make sure your value_id on your account of the MONITOR, let's say it was ABCDEF, set it by setid.sh as
-
+## read CO2 Sensor value
 ```
-./setid.sh ABCDEF
-```
-
-## test for getting CO2 Sensor value
-
-```
-sudo python mh_z19.py
+pi@raspberrypi:~ $ sudo python -m mh_z19 
+{'co2': 668}
 ```
 
-In case succeeded, espected response is as follows:
+## How to use sensor value to send to server, save to strage, and so on.
+This modlue correspond the [pondslider](https://pypi.org/project/pondslider/) which is multiple & varsataile sensor handler to save, send and to do other necessary ***something*** with the sensor value.
+
+In case you choiced ***Full Install*** mentioned above, in other words, you've done ***setup.sh***,
+the pondslider and there example handler's are already installed & setup.
+
+### A briaf explanation of how to use pondslider
+The pondslider read sensorvalue by ***sensor-handler*** specified, and pass the values to ***value-handlers**** which do something with it.
+
+![PondSlider](https://warehouse-camo.cmh1.psfhosted.org/4a74a04ed15e93c05a7c126b59459d98738a62d9/68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f5565646154616b6579756b692f706f6e64736c696465722f6d61737465722f706963732f73732e323031382d31312d30332e31332e35362e31312e706e67)
+
+Both sensor and valule handlers are python module. For more detail of handlers, please refer [this](https://pypi.org/project/pondslider/).
+
+### How to save CO2 value on a SD card as a .CSV file.
+You can do it with ***save2strage*** value handler which is in ***handlers/value/saver/save2strage***, and configration file to read from mh-z19 sensor and save by save2strage is prepared as ***config.save.toml*** on the mh-z19 installed folder.
+
+On the mh-z19 folder By calling pondslider as follows;
 
 ```
-pi@raspberrypi:~/mh-z19 $ sudo python mh_z19.py
-{'co2': 420}
+sudo python -m pondslider --config config.save.toml
 ```
 
-In case everything succeeded, expected response is consist of the log of taking photo, sending it, and {"ok":true} as follows:
+Then, ***/home/pi/DATA/co2.csv*** shoud be created and new line will be added for each call.
 
-or, return ```None``` in case 
-- Cabling between RPi & sensor is not correct.
-- Sensor is no work.
-- ***setup*** mentioned before is not finished, or not rebooted after setup.
+### How to send CO2 Value to the MONITOR™ Service
 
-## test for sending CO2 Sensor value to MONITOR™
+The MONITOR™ is a free Remote Monitoring Servcie Developped and by ***me***. I'm berry grad if you use MONITOR™ to watching CO2 Value and give me your ***any*** feedback.
 
-```
-sudo python read.py
-```
+![monitor](pic/ss.2018-11-13.20.03.27.png)
 
-Result
-![MONITOR™](https://2.bp.blogspot.com/-3JhqCyKvdK0/W5oZgTLwKbI/AAAAAAAAAqU/1CIp2FM8mokAK7n-YNE5wO8YRN6bj9NDQCEwYBhgL/s1600/%25E3%2582%25B9%25E3%2582%25AF%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%25B3%25E3%2582%25B7%25E3%2583%25A7%25E3%2583%2583%25E3%2583%2588%2B2018-09-13%2B17.01.33.png)
+Sign up as [this](https://monitor.uedasoft.com/docs/UserGuide/Signup.html), Activate View element and get a view_id as [this](https://monitor.uedasoft.com/docs/UserGuide/Value.html).
 
-## setting for automatically run view.sh at 5 minute interval
-
-You can do it both by setting crontab if you're used to do so, or you can use ***autostart.sh*** command as follows:
+Then, set your view_id to the configration file by issue ***setid.sh*** command in the mh_z19 installed directory. Let's say your view_id is ***vpgpargj***, then issue ***setid.sh*** command as follows:
 
 ```
-# set autostart on
+sudo python -m pondslider
+```
+
+Your time-series chart on the MONITOR™ display shoud be updated by the latest CO2 concentration value.
+
+### How to set your Raspberry Pi to send CO2 data to MONITOR™ at 5 minute interval.
+You can set it by autostart.sh command in the mh_z19 installed directory as follows:
+
+```
 ./autostart.sh --on
+```
 
-# set autostart off
+Turn off this as follows:
+
+```
 ./autostart.sh --off
 ```
 
-Tecknically speaking, autostart.sh doesn't use crontab, instead, prepare service for interval running of view.sh named view.service .
-You can confirm current status of view.service with following command:
+Check current status as follows:
+
 
 ```
-sudo systemctl status view.service
+./autostart.sh --status
 ```
 
-In case view.service is running, you can see the log of current status and taking & sending photo as follows:
-```
-pi@raspberrypi:~/mh-z19-v_1.0.0 $ sudo systemctl status view.service 
-● view.service - Take photos & Post to the monitor
-   Loaded: loaded (/home/pi/mh-z19-v_1.0.0/mh_z19.service; enabled; vendor preset: e
-   Active: active (running) since Thu 2018-08-23 19:07:24 JST; 4min 40s ago
- Main PID: 777 (loop.sh)
-   CGroup: /system.slice/view.service
-           ├─777 /bin/bash /home/pi/mh-z19-v_1.0.0/loop.sh
-           └─820 sleep 5m
-```
+### How to send CO2 Value to the ATT M2X.
 
-In case afte service set as off, you can see followings:
-```
-pi@raspberrypi:~/mh-z19-v_1.0.0 $ sudo systemctl status mh_z19.service 
-Unit mh_z19.service could not be found.
-```
-### Blog posts
-- [How to Measure ROOM CO2 concentration with 20$ sensor "MH-Z19" and Raspberry Pi](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-measure-room-co2-concentration.html)
-- [What is MONITOR?](https://monitorserviceatelierueda.blogspot.com/p/monitor.html)
+The Pondslider also support ATT M2X. For detail, please refer [this](https://github.com/UedaTakeyuki/handlers/blob/master/value/sender/send2m2x/README.md) document.
 
 ### Q&A
 Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/mh-z19/issues) without hesitation! 
+
+## history
+- 0.1.0  2018.09.13  first version self-forked from [slider](https://github.com/UedaTakeyuki/slider).
+- 0.2.2  2018.11.19  introduce [pondslider](https://pypi.org/project/pondslider/) and separate this [PyPi](https://pypi.org/project/mh-z19/) package.
