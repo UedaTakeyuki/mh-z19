@@ -125,7 +125,7 @@ Then, ***/home/pi/DATA/co2.csv*** shoud be created and new line will be added fo
 The MONITOR™ is a free Remote Monitoring Servcie Developped and by ***me***. I'm berry grad if you use MONITOR™ to watching CO2 Value and give me your ***any*** feedback.
 <p>
 <img src="pic/2018-11-20.11.23.19.png" width="24%">
-<img src="pic/ss.2018-11-20.11.25.43.png" width="75%">
+<img src="pic/ss.2018-11-20.11.25.43.png" width="74%">
 </p>
 Sign up as [this](https://monitor.uedasoft.com/docs/UserGuide/Signup.html), Activate View element and get a view_id as [this](https://monitor.uedasoft.com/docs/UserGuide/Value.html).
 
