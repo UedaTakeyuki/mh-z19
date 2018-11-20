@@ -74,7 +74,7 @@ Then, got to the folder and issue ***setup.sh****
 pip install pip install mh-z19
 ```
 
-After install, set up to use serial might be necessary by yourself.
+To use mh-z19, once you need to set up enabling serial port device on the Raspbyerr Pi.
 Following [Wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-Enable-Serial-Port-hardware-on-the-Raspberry-Pi) page might be informative.
 Also, please refer [PyPi top page](https://pypi.org/project/mh-z19/) for detail.
 
