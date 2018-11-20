@@ -75,7 +75,8 @@ pip install pip install mh-z19
 ```
 
 After install, set up to use serial might be necessary by yourself.
-Please refer [PyPi top page](https://pypi.org/project/mh-z19/) for detail.
+Following [Wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-Enable-Serial-Port-hardware-on-the-Raspberry-Pi) page might be informative.
+Also, please refer [PyPi top page](https://pypi.org/project/mh-z19/) for detail.
 
 ## read CO2 Sensor value
 ```
