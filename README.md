@@ -86,9 +86,9 @@ pi@raspberrypi:~ $ sudo python -m mh_z19
 
 As above, ***sudo*** might be necessary because mh-z19 sensor value is read through serial connection and it request root permission in general.
 
-## Handle sensor value by [PondSlider](https://pypi.org/project/pondslider/) multipurpose sensor handler.
+## Handle sensor value by [PondSlider](https://github.com/UedaTakeyuki/pondslider) multipurpose sensor handler.
 
-The installed ***mh-z19*** module is correspond the [pondslider](https://pypi.org/project/pondslider/) which is multiple & varsataile sensor handler to save, send and to do other necessary ***something*** with the sensor value.
+The installed ***mh-z19*** module is correspond the [pondslider](https://github.com/UedaTakeyuki/pondslider) which is multiple & varsataile sensor handler to save, send and to do other necessary ***something*** with the sensor value.
 
 As an example, we introduce following use case:
 
@@ -100,10 +100,10 @@ The pondslider read sensorvalue by ***sensor-handler*** specified, and pass the 
 
 ![PondSlider](https://warehouse-camo.cmh1.psfhosted.org/4a74a04ed15e93c05a7c126b59459d98738a62d9/68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f5565646154616b6579756b692f706f6e64736c696465722f6d61737465722f706963732f73732e323031382d31312d30332e31332e35362e31312e706e67)
 
-Both sensor and valule handlers are python module. For more detail of handlers, please refer [this](https://pypi.org/project/pondslider/).
+Both sensor and valule handlers are python module. For more detail of handlers, please refer [this](https://github.com/UedaTakeyuki/pondslider).
 
 ### How to use sensor value to send to server, save to strage, and so on.
-This modlue correspond the [pondslider](https://pypi.org/project/pondslider/) which is multiple & varsataile sensor handler to save, send and to do other necessary ***something*** with the sensor value.
+This modlue correspond the [pondslider](https://github.com/UedaTakeyuki/pondslider) which is multiple & varsataile sensor handler to save, send and to do other necessary ***something*** with the sensor value.
 
 In case you choiced ***Full Install*** mentioned above, in other words, you've done ***setup.sh***,
 the pondslider and there example handler's are already installed & setup.
