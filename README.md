@@ -123,10 +123,10 @@ Then, ***/home/pi/DATA/co2.csv*** shoud be created and new line will be added fo
 ### How to send CO2 Value to the MONITOR™ Service
 
 The MONITOR™ is a free Remote Monitoring Servcie Developped and by ***me***. I'm berry grad if you use MONITOR™ to watching CO2 Value and give me your ***any*** feedback.
-
+<p>
 <img src="pic/2018-11-20.11.23.19.png" width="28%">
 <img src="pic/ss.2018-11-20.11.25.43.png" width="68%">
-
+</p>
 Sign up as [this](https://monitor.uedasoft.com/docs/UserGuide/Signup.html), Activate View element and get a view_id as [this](https://monitor.uedasoft.com/docs/UserGuide/Value.html).
 
 Then, set your view_id to the configration file by issue ***setid.sh*** command in the mh_z19 installed directory. Let's say your view_id is ***vpgpargj***, then issue ***setid.sh*** command as follows:
