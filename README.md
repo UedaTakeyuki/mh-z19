@@ -129,10 +129,19 @@ The MONITOR™ is a free Remote Monitoring Servcie Developped and by ***me***. I
 </p>
 Sign up as [this](https://monitor.uedasoft.com/docs/UserGuide/Signup.html), Activate View element and get a view_id as [this](https://monitor.uedasoft.com/docs/UserGuide/Value.html).
 
-Then, set your view_id to the configration file by issue ***setid.sh*** command in the mh_z19 installed directory. Let's say your view_id is ***vpgpargj***, then issue ***setid.sh*** command as follows:
+Need to set view_id mentioned above as a destination. To do this, call ***setid.sh*** command in the mh_z19 installed directory. Let's say your view_id is ***vpgpargj***, then issue ***setid.sh*** command as follows:
 
 ```
 ./setid.sh vpgpargj
+```
+
+Then, call "pondslider" python script as follows:
+
+```
+pi@raspberrypi:~/mh-z19 $ sudo python -m pondslider
+{'co2': 742}
+co2
+{"ok":false,"reason":"ViewID not valid"}
 ```
 
 Your time-series chart on the MONITOR™ display shoud be updated by the latest CO2 concentration value.
