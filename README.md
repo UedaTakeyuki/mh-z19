@@ -155,13 +155,13 @@ You can set it by autostart.sh command in the mh_z19 installed directory as foll
 ./autostart.sh --on
 ```
 
-Turn off this as follows:
+You can tTurn off this as follows:
 
 ```
 ./autostart.sh --off
 ```
 
-Check current status as follows:
+Also, You can check current status as follows:
 
 
 ```
