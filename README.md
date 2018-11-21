@@ -132,7 +132,7 @@ Sign up as [this](https://monitor.uedasoft.com/docs/UserGuide/Signup.html), Acti
 Then, set your view_id to the configration file by issue ***setid.sh*** command in the mh_z19 installed directory. Let's say your view_id is ***vpgpargj***, then issue ***setid.sh*** command as follows:
 
 ```
-sudo python -m pondslider
+./setid.sh vpgpargj
 ```
 
 Your time-series chart on the MONITOR™ display shoud be updated by the latest CO2 concentration value.
