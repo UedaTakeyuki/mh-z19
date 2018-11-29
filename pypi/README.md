@@ -86,4 +86,4 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 0.1.1  2018.11.05  first version self-forked from [slider](https://github.com/UedaTakeyuki/slider).
 - 0.1.3  2018.11.06  fix Readme.
 - 0.1.4  2018.11.15  revise Readme.
-- 0.1.5  2018.11.29  revise Readme.
+- 0.1.6  2018.11.29  revise Readme.
