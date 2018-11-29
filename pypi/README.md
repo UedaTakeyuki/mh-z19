@@ -7,6 +7,10 @@ Read CO2 concentration from mh-z19 sensor
 ```
 pip install mh-z19
 ```
+## installs
+[![Downloads](https://pepy.tech/badge/mh-z19)](https://pepy.tech/project/mh-z19)
+[![Downloads](https://pepy.tech/badge/mh-z19/month)](https://pepy.tech/project/mh-z19)
+[![Downloads](https://pepy.tech/badge/mh-z19/week)](https://pepy.tech/project/mh-z19)
 
 ## how to use
 Use as python script.
@@ -27,7 +31,12 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 ```
 
-The sudo might be necessary because mh_z19 module use Serial.
+The ***sudo*** might be necessary because mh_z19 module use Serial.
+
+The differences of the interface between each Raspberry Pi modle are resolved inside this module. For example, serial device name is difference between Raspberry Pi 3 and older model, but mh-z19 module automatically detect the model and read from appropriate serial device.
+
+To use mh-z19, once you need to set up enabling serial port device on the Raspbyerr Pi.
+Following [Wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-Enable-Serial-Port-hardware-on-the-Raspberry-Pi) page might be informative.
 
 ## cabling
 Connect RPi & mh-z19 as:
@@ -77,3 +86,4 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 0.1.1  2018.11.05  first version self-forked from [slider](https://github.com/UedaTakeyuki/slider).
 - 0.1.3  2018.11.06  fix Readme.
 - 0.1.4  2018.11.15  revise Readme.
+- 0.1.5  2018.11.29  revise Readme.
