@@ -67,12 +67,14 @@ Then, got to the folder and issue ***setup.sh****
 ```
 ./setup.sh 
 ```
+Necessary settings including serial port enabling are taken place in this script.
 
 ### Install only sensor module
 
 ```bash:
 pip install pip install mh-z19
 ```
+The differences of the interface between each Raspberry Pi modle are resolved inside this module. For example, serial device name is difference between Raspberry Pi 3 and older model, but mh-z19 module automatically detect the model and read from appropriate serial device.
 
 To use mh-z19, once you need to set up enabling serial port device on the Raspbyerr Pi.
 Following [Wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-Enable-Serial-Port-hardware-on-the-Raspberry-Pi) page might be informative.
