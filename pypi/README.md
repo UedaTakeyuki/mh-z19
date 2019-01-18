@@ -87,3 +87,7 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 0.1.3  2018.11.06  fix Readme.
 - 0.1.4  2018.11.15  revise Readme.
 - 0.1.6  2018.11.29  revise Readme.
+- 0.2.1  2019.01.18  add followings without test (sorry)
+                       abc_on(), abc_off(), span_point_calibration(),
+											 xero_point_calibration(), detection_range_5000(),
+											 detection_range_2000(), checksum()
