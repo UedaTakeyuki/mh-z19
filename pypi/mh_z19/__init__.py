@@ -107,18 +107,18 @@ def zero_point_calibration():
 def detection_range_5000():
   ser = connect_serial()
   if p_ver == '2':
-    request = "\xff\x01\x99\x13\x88\x00\x00\x00\xcb"
+    request = "\xff\x01\x99\x00\x00\x00\x13\x88\xcb"
   else:
-    request = b"\xff\x01\x99\x13\x88\x00\x00\x00\xcb"
+    request = b"\xff\x01\x99\x00\x00\x00\x13\x88\xcb"
   result = ser.write(request)
   ser.close()
 
 def detection_range_2000():
   ser = connect_serial()
   if p_ver == '2':
-    request = "\xff\x01\x99\x07\xd0\x00\x00\x00\xc6"
+    request = "\xff\x01\x99\x00\x00\x00\x07\xd0\xc6"
   else:
-    request = b"\xff\x01\x99\x07\xd0\x00\x00\x00\xc6"
+    request = b"\xff\x01\x99\x00\x00\x00\x07\xd0\xc6"
   result = ser.write(request)
   ser.close()
 
