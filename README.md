@@ -124,7 +124,7 @@ Then, ***/home/pi/DATA/co2.csv*** shoud be created and new line will be added fo
 
 ### How to send CO2 Value to the MONITOR™ Service
 
-The MONITOR™ is a free Remote Monitoring Servcie Developped and by ***me***. I'm berry grad if you use MONITOR™ to watching CO2 Value and give me your ***any*** feedback.
+The MONITOR™ is a free Remote Monitoring Servcie to show latest data on the web.
 
 <p>
 <img src="pic/2018-11-20.11.23.19.png" width="24%">
@@ -170,9 +170,20 @@ Also, You can check current status as follows:
 ./autostart.sh --status
 ```
 
+For more detail, please refer this [blog](https://monitorserviceatelierueda.blogspot.com/2018/11/how-to-measure-room-co2-concentration.html). 
+
 ### How to send CO2 Value to the ATT M2X.
 
 The Pondslider also support ATT M2X. For detail, please refer [this](https://github.com/UedaTakeyuki/handlers/blob/master/value/sender/send2m2x/README.md) document.
+
+### Calibration and Detection range
+Features about calibration (both MH-Z19 & MH-Z19B) and detection range change (MH-Z19B) is implemented at version 0.2.1 or later.
+
+I'm afraid I've just only implemented these without test due to lack necessary devices and apparatus for the test, fx: standard consentration CO2 GAS, also MH-Z19B module.
+If you have these devices or apparatus and try to use these functions generously, I'm really appreciate your [issue report](https://github.com/UedaTakeyuki/mh-z19/issues) regardless result were positive or negative.
+
+For detail prease refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/CALIBRATION-&-detection-range).
+
 
 ### Q&A
 Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/mh-z19/issues) without hesitation! 
@@ -181,3 +192,4 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 0.1.0  2018.09.13  first version self-forked from [slider](https://github.com/UedaTakeyuki/slider).
 - 0.2.2  2018.11.19  introduce [pondslider](https://pypi.org/project/pondslider/) and separate this [PyPi](https://pypi.org/project/mh-z19/) package.
 - 2.0.0  2019.01.18  Add Calibration, ABC on/off requested by [this issue](https://github.com/UedaTakeyuki/mh-z19/issues/1). Please refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/module).
+- 0.3.5  2019.01.22  Both Python2 & Python3 support

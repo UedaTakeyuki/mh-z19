@@ -79,6 +79,21 @@ pi@raspberrypi:~/mh-z19 $ gpio readall
  +-----+-----+---------+------+---+---Pi B+--+---+------+---------+-----+-----+
 ```
 
+### Watch CO2 concentration on your browser 
+<img src="https://github.com/UedaTakeyuki/mh-z19/raw/master/pic/2018-11-20.11.23.19.png" width="24%">
+
+[MONITOR™](https://monitor3.uedasoft.com) is a free Remote Monitoring Servcie to show latest data on the web. You can see the current CO2 concentration value measured by your MH-Z19 device on your smartphone. For detail, please refer this [blog](https://monitorserviceatelierueda.blogspot.com/2018/11/how-to-measure-room-co2-concentration.html). 
+
+
+### Calibration and Detection range
+Features about calibration (both MH-Z19 & MH-Z19B) and detection range change (MH-Z19B) is implemented at version 0.2.1 or later.
+
+I'm afraid I've just only implemented these without test due to lack necessary devices and apparatus for the test, fx: standard consentration CO2 GAS, also MH-Z19B module.
+If you have these devices or apparatus and try to use these functions generously, I'm really appreciate your [issue report](https://github.com/UedaTakeyuki/mh-z19/issues) regardless result were positive or negative.
+
+For detail prease refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/CALIBRATION-&-detection-range).
+
+
 ### Q&A
 Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/mh-z19/issues) without hesitation! 
 
@@ -91,3 +106,4 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
                        abc_on(), abc_off(), span_point_calibration(),
 											 xero_point_calibration(), detection_range_5000(),
 											 detection_range_2000(), checksum()
+- 0.3.4  2019.01.22  Both Python2 & Python3 support
