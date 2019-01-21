@@ -4,6 +4,7 @@
 # © Takeyuki UEDA 2015 -
 import sys
 import argparse
+import json
 import mh_z19.__init__ as mh_z19
 #import __init__ as mh_z19
 
@@ -52,6 +53,6 @@ elif args.detection_range_2000:
   print ("Set Detection range as 2000.")
 else:
   value = mh_z19.read()
-  print (value)
+  print (json.dumps(value))
 
 sys.exit(0)
