@@ -188,6 +188,13 @@ For detail prease refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/
 ### Q&A
 Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/mh-z19/issues) without hesitation! 
 
+## References
+
+- [MH-H19 DataSheet](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf)
+- [MH-H19B DataSheet](https://www.winsen-sensor.com/d/files/infrared-gas-sensor/mh-z19b-co2-ver1_0.pdf)
+- [RevSpace](https://revspace.nl/MHZ19#Setting_the_measurement_range)
+
+
 ## history
 - 0.1.0  2018.09.13  first version self-forked from [slider](https://github.com/UedaTakeyuki/slider).
 - 0.2.2  2018.11.19  introduce [pondslider](https://pypi.org/project/pondslider/) and separate this [PyPi](https://pypi.org/project/mh-z19/) package.
