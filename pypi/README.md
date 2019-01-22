@@ -106,4 +106,5 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
                        abc_on(), abc_off(), span_point_calibration(),
 											 xero_point_calibration(), detection_range_5000(),
 											 detection_range_2000(), checksum()
-- 0.3.4  2019.01.22  Both Python2 & Python3 support
+- 0.3.5  2019.01.22  Both Python2 & Python3 support
+- 0.3.6  2019.01.22  Merge [Pull Request #3](https://github.com/UedaTakeyuki/mh-z19/pull/3) & [Pull Request #4](https://github.com/UedaTakeyuki/mh-z19/pull/4). Thanks [David](https://github.com/kostaldavid8)!

@@ -116,9 +116,9 @@ def detection_range_5000():
 def detection_range_2000():
   ser = connect_serial()
   if p_ver == '2':
-    request = "\xff\x01\x99\x00\x00\x00\x07\xd0\xc6"
+    request = "\xff\x01\x99\x00\x00\x00\x07\xd0\x8F"
   else:
-    request = b"\xff\x01\x99\x00\x00\x00\x07\xd0\xc6"
+    request = b"\xff\x01\x99\x00\x00\x00\x07\xd0\x8F"
   result = ser.write(request)
   ser.close()
 

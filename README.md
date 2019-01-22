@@ -193,3 +193,5 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 0.2.2  2018.11.19  introduce [pondslider](https://pypi.org/project/pondslider/) and separate this [PyPi](https://pypi.org/project/mh-z19/) package.
 - 2.0.0  2019.01.18  Add Calibration, ABC on/off requested by [this issue](https://github.com/UedaTakeyuki/mh-z19/issues/1). Please refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/module).
 - 0.3.5  2019.01.22  Both Python2 & Python3 support
+- 2.3.6  2019.01.22  Merge [Pull Request #3](https://github.com/UedaTakeyuki/mh-z19/pull/3) & [Pull Request #4](https://github.com/UedaTakeyuki/mh-z19/pull/4). Thanks [David](https://github.com/kostaldavid8)!
+
