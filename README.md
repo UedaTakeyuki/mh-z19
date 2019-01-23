@@ -131,9 +131,12 @@ The MONITOR™ is a free Remote Monitoring Servcie to show latest data on the we
 <img src="pic/ss.2018-11-20.11.25.43.png" width="73%">
 </p>
 
-Sign up as [this](https://monitor.uedasoft.com/docs/UserGuide/Signup.html), Activate View element and get a view_id as [this](https://monitor.uedasoft.com/docs/UserGuide/Value.html).
+Please refer an [introduction](https://monitor.uedasoft.com/docs/UserGuide/) to grasp birds-eye understanding about MONIOR™.
 
-Need to set view_id mentioned above as a destination. To do this, call ***setid.sh*** command in the mh_z19 installed directory. Let's say your view_id is ***vpgpargj***, then issue ***setid.sh*** command as follows:
+A free account is available as [follow](https://monitor.uedasoft.com/docs/UserGuide/Signup.html).
+Then, login and get a **view_id**, which is unique id to point a data area on the MONITOR™ to show latest value and chart, as [follow](https://monitor.uedasoft.com/docs/UserGuide/Value.html).
+
+After get a value_id at your browser, return back to terminal of your Raspberry Pi, then you should set your this software to send measured value to the value_id. To do this, call **setid.sh** command in the mh_z19 installed directory. Let's say your value_id is ***vpgpargj***, issue ***setid.sh*** command as follows:
 
 ```
 ./setid.sh vpgpargj
@@ -148,7 +151,7 @@ co2
 {"ok":false,"reason":"ViewID not valid"}
 ```
 
-Your time-series chart on the MONITOR™ display shoud be updated by the latest CO2 concentration value.
+Your time-series chart on the MONITOR™ display on the browser must be updated by the latest CO2 concentration value.
 
 ### How to set your Raspberry Pi to send CO2 data to MONITOR™ at 5 minute interval.
 You can set it by autostart.sh command in the mh_z19 installed directory as follows:
