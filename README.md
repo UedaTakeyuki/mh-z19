@@ -179,8 +179,8 @@ For more detail, please refer this [blog](https://monitorserviceatelierueda.blog
 
 The Pondslider also support ATT M2X. For detail, please refer [this](https://github.com/UedaTakeyuki/handlers/blob/master/value/sender/send2m2x/README.md) document.
 
-### Calibration and Detection range
-Features about calibration (both MH-Z19 & MH-Z19B) and detection range change (MH-Z19B) is implemented at version 0.2.1 or later.
+### Calibration, Detection range settings, and ABC(Automatic Baseline Correction) logic on/off.
+Features about calibration (both MH-Z19 & MH-Z19B), detection range change (MH-Z19B) and ABC logic on/off(MH-Z19B) are implemented at version 0.2.1 or later.
 
 I'm afraid I've just only implemented these without test due to lack necessary devices and apparatus for the test, fx: standard consentration CO2 GAS, also MH-Z19B module.
 If you have these devices or apparatus and try to use these functions generously, I'm really appreciate your [issue report](https://github.com/UedaTakeyuki/mh-z19/issues) regardless result were positive or negative.
