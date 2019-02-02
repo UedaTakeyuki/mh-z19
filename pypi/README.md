@@ -85,8 +85,8 @@ pi@raspberrypi:~/mh-z19 $ gpio readall
 [MONITOR™](https://monitor3.uedasoft.com) is a free Remote Monitoring Servcie to show latest data on the web. You can see the current CO2 concentration value measured by your MH-Z19 device on your smartphone. For detail, please refer this [blog](https://monitorserviceatelierueda.blogspot.com/2018/11/how-to-measure-room-co2-concentration.html). 
 
 
-### Calibration and Detection range
-Features about calibration (both MH-Z19 & MH-Z19B) and detection range change (MH-Z19B) is implemented at version 0.2.1 or later.
+### Calibration, Detection range settings, and ABC(Automatic Baseline Correction) logic on/off.
+Features about calibration (both MH-Z19 & MH-Z19B), detection range change (MH-Z19B) and ABC logic on/off(MH-Z19B) are implemented at version 0.2.1 or later.
 
 I'm afraid I've just only implemented these without test due to lack necessary devices and apparatus for the test, fx: standard consentration CO2 GAS, also MH-Z19B module.
 If you have these devices or apparatus and try to use these functions generously, I'm really appreciate your [issue report](https://github.com/UedaTakeyuki/mh-z19/issues) regardless result were positive or negative.
