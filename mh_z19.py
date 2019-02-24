@@ -107,12 +107,14 @@ def test():
   ser = connect_serial()
 #  result=ser.write("\xff\x01\0x73\x00\x00\x00\x00\x00\x8c")
   c = checksum([0x01, 0x86])
-  result=ser.write("\xff\x01\x86\x00\x00\x00\x00\x00"+c)
-  s=ser.read(20)
-  for elm in s:
-    print ord(elm)
+  if p_ver == '2':
+    result=ser.write("\xff\x01\x86\x00\x00\x00\x00\x00"+c)
+    s=ser.read(20)
+    for elm in s:
+      print (ord(elm))
   p = subprocess.call(start_getty, stdout=subprocess.PIPE, shell=True)
-  return {'temperatur': ord(s[4])}
+  if p_ver == '2':
+    return {'temperatur': ord(s[4])}
 
 
 def abc_on():
