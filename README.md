@@ -188,7 +188,7 @@ If you have these devices or apparatus and try to use these functions generously
 For detail prease refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/CALIBRATION-&-detection-range).
 
 ### Undocumented response values of 0x86 command.
-The [Revspace/MHZ19](https://revspace.nl/MHZ19#Command_0x86_.28read_concentration.29) shows values undocumented on the official datasheets([MH-Z19](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf), [MH-Z19B](https://www.winsen-sensor.com/d/files/infrared-gas-sensor/mh-z19b-co2-ver1_0.pdf)). In accordance with this, **--all** add these values in the return json value as follows:
+The [Revspace/MHZ19](https://revspace.nl/MHZ19#Command_0x86_.28read_concentration.29) shows values undocumented on the official datasheets([MH-Z19](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf), [MH-Z19B](https://www.winsen-sensor.com/d/files/infrared-gas-sensor/mh-z19b-co2-ver1_0.pdf)). In accordance with this, **--all** option add these values in the return json value as follows:
 
 ```bash:
 sudo python -m mh_z19 --all
