@@ -1,8 +1,8 @@
 ---
-name: Feature request
+name: Help wanted
 about: Feel free to ask me anything!
 title: ''
-labels: ''
+labels: help wanted
 assignees: ''
 
 ---
