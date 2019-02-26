@@ -93,6 +93,30 @@ If you have these devices or apparatus and try to use these functions generously
 
 For detail prease refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/CALIBRATION-&-detection-range).
 
+### Undocumented response values of 0x86 command.
+The [Revspace/MHZ19](https://revspace.nl/MHZ19#Command_0x86_.28read_concentration.29) shows values undocumented on the official datasheets([MH-Z19](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf), [MH-Z19B](https://www.winsen-sensor.com/d/files/infrared-gas-sensor/mh-z19b-co2-ver1_0.pdf)). In accordance with this, **--all** option add these values in the return json value as follows:
+
+```bash:
+sudo python -m mh_z19 --all
+{"SS": 232, "UhUl": 10752, "TT": 61, "co2": 818, "temperature": 21}
+
+sudo python3 -m mh_z19 --all
+{"TT": 61, "co2": 807, "SS": 232, "temperature": 21, "UhUl": 10752}
+```
+
+or call **read_all()** function as follows:
+
+```
+>>> import mh_z19
+>>> mh_z19.read_all()
+{'SS': 232, 'UhUl': 10738, 'TT': 61, 'co2': 734, 'temperature': 21}
+>>> 
+```
+
+Dispite, I think the TT value might NOT be related to the ambient temperature, but also this might be a internal thermal sensor value which is pair with a infrared heater they are necessary for measuring CO2 concentration by NDIR(Nondispersive Infrared) method.
+
+So, returned temperature value might be not match with real temperatur.
+Please refer detail about my argument as [Is the undocumented TT value on the responses of command 0x86 really related to the ambient temperature?](https://github.com/UedaTakeyuki/mh-z19/wiki/Is-the-undocumented-TT-value-on-the-responses-of-command-0x86-really-related-to-the-ambient-temperature%3F).
 
 ### Q&A
 Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/mh-z19/issues) without hesitation! 
@@ -108,3 +132,5 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 											 detection_range_2000(), checksum()
 - 0.3.5  2019.01.22  Both Python2 & Python3 support
 - 0.3.6  2019.01.22  Merge [Pull Request #3](https://github.com/UedaTakeyuki/mh-z19/pull/3) & [Pull Request #4](https://github.com/UedaTakeyuki/mh-z19/pull/4). Thanks [David](https://github.com/kostaldavid8)!
+- 0.3.7  2019.02.25  Add --all option which requested as [issue#5](https://github.com/UedaTakeyuki/mh-z19/issues/5), thanks [Rafał](https://github.com/rzarajczyk)!
+
