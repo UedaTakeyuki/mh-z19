@@ -12,6 +12,7 @@ import struct
 import platform
 
 # setting
+version = "0.3.7"
 
 if getrpimodel.model() == "3 Model B":
   serial_dev = '/dev/ttyS0'

@@ -12,6 +12,9 @@ parser = argparse.ArgumentParser(
   description='''return CO2 concentration as object as {'co2': 416}''',
 )
 group = parser.add_mutually_exclusive_group()
+group.add_argument("--version",
+                    action='store_true',
+                    help='''show version''')
 group.add_argument("--all",
                     action='store_true',
                     help='''return all (co2, temperature, TT, SS and UhUl) as json''')
@@ -54,6 +57,8 @@ elif args.detection_range_5000:
 elif args.detection_range_2000:
   mh_z19.detection_range_2000()
   print ("Set Detection range as 2000.")
+elif args.version:
+  print (mh_z19.version)
 elif args.all:
   value = mh_z19.read_all()
   print (json.dumps(value))

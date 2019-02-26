@@ -15,6 +15,7 @@ import sys
 import json
 
 # setting
+version = "0.3.7"
 
 if getrpimodel.model() == "3 Model B":
   serial_dev = '/dev/ttyS0'
@@ -157,6 +158,9 @@ if __name__ == '__main__':
     description='''return CO2 concentration as object as {'co2': 416}''',
   )
   group = parser.add_mutually_exclusive_group()
+  group.add_argument("--version",
+                      action='store_true',
+                      help='''show version''')
   group.add_argument("--all",
                       action='store_true',
                       help='''return all (co2, temperature, TT, SS and UhUl) as json''')
@@ -199,6 +203,8 @@ if __name__ == '__main__':
   elif args.detection_range_2000:
     detection_range_2000()
     print ("Set Detection range as 2000.")
+  elif args.version:
+    print (version)
   elif args.all:
     value = read_all()
     print (json.dumps(value))
