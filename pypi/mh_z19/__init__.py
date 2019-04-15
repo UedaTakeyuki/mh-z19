@@ -13,16 +13,19 @@ import platform
 
 # setting
 version = "0.3.7"
+pimodel = getrpimodel.model()
 
-if getrpimodel.model() == "3 Model B":
-  serial_dev = '/dev/ttyS0'
-  stop_getty = 'sudo systemctl stop serial-getty@ttyS0.service'
-  start_getty = 'sudo systemctl start serial-getty@ttyS0.service'
+if pimodel == "3 Model B":
+  partial_serial_dev = 'ttyS0'
+elif pimodel == 'Zero':
+  partial_serial_dev = 'serial0'
 else:
-  serial_dev = '/dev/ttyAMA0'
-  stop_getty = 'sudo systemctl stop serial-getty@ttyAMA0.service'
-  start_getty = 'sudo systemctl start serial-getty@ttyAMA0.service'
-
+  partial_serial_dev = 'ttyAMA0'
+  
+serial_dev = '/dev/%s' % partial_serial_dev
+stop_getty = 'sudo systemctl stop serial-getty@%s.service' % partial_serial_dev
+start_getty = 'sudo systemctl start serial-getty@%s.service' % partial_serial_dev
+  
 # major version of running python
 p_ver = platform.python_version_tuple()[0]
 
