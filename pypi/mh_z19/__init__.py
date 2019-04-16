@@ -12,7 +12,7 @@ import struct
 import platform
 
 # setting
-version = "0.3.7"
+version = "0.3.8"
 pimodel = getrpimodel.model()
 
 if pimodel == "3 Model B":
