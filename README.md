@@ -44,7 +44,7 @@ pi@raspberrypi:~/mh-z19 $ gpio readall
  +-----+-----+---------+------+---+---Pi B+--+---+------+---------+-----+-----+
 ```
 
-## Install & Settup
+## Install & Setup
 
 ### Full Set Install
 Full Set include followings:
@@ -74,9 +74,9 @@ Necessary settings including serial port enabling are taken place in this script
 ```bash:
 pip install pip install mh-z19
 ```
-The differences of the interface between each Raspberry Pi modle are resolved inside this module. For example, serial device name is difference between Raspberry Pi 3 and older model, but mh-z19 module automatically detect the model and read from appropriate serial device.
+The differences of the interface between each Raspberry Pi model are resolved inside this module. For example, serial device name is difference between Raspberry Pi 3 and older model, but mh-z19 module automatically detect the model and read from appropriate serial device.
 
-To use mh-z19, once you need to set up enabling serial port device on the Raspbyerr Pi.
+To use mh-z19, once you need to set up enabling serial port device on the Raspberry Pi.
 Following [Wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-Enable-Serial-Port-hardware-on-the-Raspberry-Pi) page might be informative.
 Also, please refer [PyPi top page](https://pypi.org/project/mh-z19/) for detail.
 
@@ -90,29 +90,29 @@ As above, ***sudo*** might be necessary because mh-z19 sensor value is read thro
 
 ## Handle sensor value by [PondSlider](https://github.com/UedaTakeyuki/pondslider) multipurpose sensor handler.
 
-The installed ***mh-z19*** module is correspond the [pondslider](https://github.com/UedaTakeyuki/pondslider) which is multiple & varsataile sensor handler to save, send and to do other necessary ***something*** with the sensor value.
+The installed ***mh-z19*** module is correspond the [pondslider](https://github.com/UedaTakeyuki/pondslider) which is multiple & versatile sensor handler to save, send and to do other necessary ***something*** with the sensor value.
 
 As an example, we introduce following use case:
 
 - How to save sensor value to SD card as .CSV file.
 - How to send sensor value to free Remote Monitoring Service.
 
-### A briaf explanation of pondslider
+### A brief explanation of pondslider
 The pondslider read sensorvalue by ***sensor-handler*** specified, and pass the values to ***value-handlers**** which do something with it.
 
 ![PondSlider](https://warehouse-camo.cmh1.psfhosted.org/4a74a04ed15e93c05a7c126b59459d98738a62d9/68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f5565646154616b6579756b692f706f6e64736c696465722f6d61737465722f706963732f73732e323031382d31312d30332e31332e35362e31312e706e67)
 
-Both sensor and valule handlers are python module. For more detail of handlers, please refer [this](https://github.com/UedaTakeyuki/pondslider).
+Both sensor and value handlers are python module. For more detail of handlers, please refer [this](https://github.com/UedaTakeyuki/pondslider).
 
 ### How to use sensor value to send to server, save to strage, and so on.
-This modlue correspond the [pondslider](https://github.com/UedaTakeyuki/pondslider) which is multiple & varsataile sensor handler to save, send and to do other necessary ***something*** with the sensor value.
+This module correspond the [pondslider](https://github.com/UedaTakeyuki/pondslider) which is multiple & versatile sensor handler to save, send and to do other necessary ***something*** with the sensor value.
 
 In case you choiced ***Full Install*** mentioned above, in other words, you've done ***setup.sh***,
 the pondslider and there example handler's are already installed & setup.
 
 
 ### How to save CO2 value on a SD card as a .CSV file.
-You can do it with ***save2strage*** value handler which is in ***handlers/value/saver/save2strage***, and configration file to read from mh-z19 sensor and save by save2strage is prepared as ***config.save.toml*** on the mh-z19 installed folder.
+You can do it with ***save2strage*** value handler which is in ***handlers/value/saver/save2strage***, and configuration file to read from mh-z19 sensor and save by save2strage is prepared as ***config.save.toml*** on the mh-z19 installed folder.
 
 On the mh-z19 folder By calling pondslider as follows;
 
@@ -124,7 +124,7 @@ Then, ***/home/pi/DATA/co2.csv*** shoud be created and new line will be added fo
 
 ### How to send CO2 Value to the MONITOR™ Service
 
-The MONITOR™ is a free Remote Monitoring Servcie to show latest data on the web.
+The MONITOR™ is a free Remote Monitoring Service to show latest data on the web.
 
 <p>
 <img src="pic/2018-11-20.11.23.19.png" width="24%">
