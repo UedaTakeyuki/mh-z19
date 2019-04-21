@@ -1,5 +1,5 @@
 # mh-z19
-Read CO2 concentration from mh-z19 sensor&amp; and handle it.
+Read CO2 concentration from mh-z19 sensor and handle it.
 
 ![MH-Z19](https://camo.qiitausercontent.com/a270df1162ed5c3bf9968b24064b91eed0dfcc11/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e616d617a6f6e6177732e636f6d2f302f34363534342f31353739663964622d306634302d373665382d303566332d3939336132346334376431382e706e67)
 
@@ -8,7 +8,7 @@ Connect RPi & mh-z19 as:
 
 - 5V on RPi and Vin on mh-z19
 - GND(0v) on RPi and GND on mh-z19
-- TxD and RxD are connect to cross between RPi and mh-z18 
+- TxD and RxD are connected to cross between RPi and mh-z18 
 
 Followings are example of cabling, but you can free to use other 5v and 0v Pin on the RPi. 
 
@@ -120,7 +120,7 @@ On the mh-z19 folder By calling pondslider as follows;
 sudo python -m pondslider --config config.save.toml
 ```
 
-Then, ***/home/pi/DATA/co2.csv*** shoud be created and new line will be added for each call.
+Then, ***/home/pi/DATA/co2.csv*** should be created and new line will be added for each call.
 
 ### How to send CO2 Value to the MONITOR™ Service
 
@@ -182,13 +182,13 @@ The Pondslider also support ATT M2X. For detail, please refer [this](https://git
 ### Calibration, Detection range settings, and ABC(Automatic Baseline Correction) logic on/off.
 Features about calibration (both MH-Z19 & MH-Z19B), detection range change (MH-Z19B) and ABC logic on/off(MH-Z19B) are implemented at version 0.2.1 or later.
 
-I'm afraid I've just only implemented these without test due to lack necessary devices and apparatus for the test, fx: standard consentration CO2 GAS, also MH-Z19B module.
+I'm afraid I've just only implemented these without test due to lack necessary devices and apparatus for the test, fx: standard concentration CO2 GAS, also MH-Z19B module.
 If you have these devices or apparatus and try to use these functions generously, I'm really appreciate your [issue report](https://github.com/UedaTakeyuki/mh-z19/issues) regardless result were positive or negative.
 
-For detail prease refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/CALIBRATION-&-detection-range).
+For detail please refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/CALIBRATION-&-detection-range).
 
 ### Undocumented response values of 0x86 command.
-The [Revspace/MHZ19](https://revspace.nl/MHZ19#Command_0x86_.28read_concentration.29) shows values undocumented on the official datasheets([MH-Z19](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf), [MH-Z19B](https://www.winsen-sensor.com/d/files/infrared-gas-sensor/mh-z19b-co2-ver1_0.pdf)). In accordance with this, **--all** option add these values in the return json value as follows:
+The [Revspace/MHZ19](https://revspace.nl/MHZ19#Command_0x86_.28read_concentration.29) shows values undocumented on the official datasheets ([MH-Z19](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf), [MH-Z19B](https://www.winsen-sensor.com/d/files/infrared-gas-sensor/mh-z19b-co2-ver1_0.pdf)). In accordance with this, **--all** option add these values in the return json value as follows:
 
 ```bash:
 sudo python -m mh_z19 --all
@@ -207,9 +207,9 @@ or call **read_all()** function as follows:
 >>> 
 ```
 
-Dispite, I think the TT value might NOT be related to the ambient temperature, but also this might be a internal thermal sensor value which is pair with a infrared heater they are necessary for measuring CO2 concentration by NDIR(Nondispersive Infrared) method.
+Despite, I think the TT value might NOT be related to the ambient temperature, but also this might be a internal thermal sensor value which is pair with a infrared heater they are necessary for measuring CO2 concentration by NDIR (Non-dispersive Infrared) method.
 
-So, returned temperature value might be not match with real temperatur.
+So, returned temperature value might be not match with real temperature.
 Please refer detail about my argument as [Is the undocumented TT value on the responses of command 0x86 really related to the ambient temperature?](https://github.com/UedaTakeyuki/mh-z19/wiki/Is-the-undocumented-TT-value-on-the-responses-of-command-0x86-really-related-to-the-ambient-temperature%3F).
 
 ### Q&A

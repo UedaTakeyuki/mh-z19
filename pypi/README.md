@@ -43,7 +43,7 @@ Connect RPi & mh-z19 as:
 
 - 5V on RPi and Vin on mh-z19
 - GND(0v) on RPi and GND on mh-z19
-- TxD and RxD are connect to cross between RPi and mh-z18 
+- TxD and RxD are connected to cross between RPi and mh-z18 
 
 Followings are example of cabling, but you can free to use other 5v and 0v Pin on the RPi. 
 
@@ -113,7 +113,7 @@ or call **read_all()** function as follows:
 >>> 
 ```
 
-Despite, I think the TT value might NOT be related to the ambient temperature, but also this might be an internal thermal sensor value which is pair with a infrared heater they are necessary for measuring CO2 concentration by NDIR (Nondispersive Infrared) method.
+Despite, I think the TT value might NOT be related to the ambient temperature, but also this might be an internal thermal sensor value which is pair with a infrared heater they are necessary for measuring CO2 concentration by NDIR (Non-dispersive Infrared) method.
 
 So, returned temperature value might not match with real temperature.
 Please refer detail about my argument as [Is the undocumented TT value on the responses of command 0x86 really related to the ambient temperature?](https://github.com/UedaTakeyuki/mh-z19/wiki/Is-the-undocumented-TT-value-on-the-responses-of-command-0x86-really-related-to-the-ambient-temperature%3F).
