@@ -237,4 +237,4 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 2.3.8  2019.04.16  Merge [Pull Request #7](https://github.com/UedaTakeyuki/mh-z19/pull/7). Thanks [Alexander](https://github.com/belibak)!
 - 2.3.8.1  2019.04.20  Merge [Pull Request #8](https://github.com/UedaTakeyuki/mh-z19/pull/8). Thanks [WO15](https://github.com/WO15)!
 - 2.3.8.5  2019.04.21  Merge [Pull Request #9](https://github.com/UedaTakeyuki/mh-z19/pull/9). Thanks [WO15](https://github.com/WO15)!
-- 2.3.8.6  2019.04.22  Merge [Pull Request #9](https://github.com/UedaTakeyuki/mh-z19/pull/9). Thanks [WO15](https://github.com/WO15)!
+- 2.3.8.6  2019.04.22  Merge [Pull Request #10](https://github.com/UedaTakeyuki/mh-z19/pull/10). Thanks [WO15](https://github.com/WO15)!
