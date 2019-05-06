@@ -135,3 +135,5 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 0.3.7  2019.02.25  Add --all option which requested as [issue#5](https://github.com/UedaTakeyuki/mh-z19/issues/5), thanks [Rafał](https://github.com/rzarajczyk)!
 - 0.3.8  2019.04.16  Merge [Pull Request #7](https://github.com/UedaTakeyuki/mh-z19/pull/7). Thanks [Alexander](https://github.com/belibak)!
 - 0.3.8.5  2019.04.21  Merge [Pull Request #9](https://github.com/UedaTakeyuki/mh-z19/pull/9). Thanks [WO15](https://github.com/WO15)!
+- 0.3.9  2019.05.06  Revise the serial port selection logic. Support using **PL011** uart on Raspberry Pi **Model 3 and Zero W** which is selected by setting dtoverlay=**pi3-miniuart-bt** or dtoverlay=**pi3-disable-bt**. Thanks **片岡さん** for your kindly [report](https://qiita.com/yukataoka/items/a3b4065e8210b8f372ff) including this issue!
+
