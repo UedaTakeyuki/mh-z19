@@ -13,18 +13,20 @@ import platform
 import argparse
 import sys
 import json
+import os.path
 
 # setting
-version = "0.3.8"
-pimodel = getrpimodel.model()
+version = "0.3.9"
+pimodel        = getrpimodel.model
+pimodel_strict = getrpimodel.model_strict()
 
-if pimodel == "3 Model B":
-  partial_serial_dev = 'ttyS0'
-elif pimodel == 'Zero':
+if os.path.exists('/dev/serial0'):
   partial_serial_dev = 'serial0'
+elif pimodel == "3 Model B" or pimodel_strict == "Zero W":
+  partial_serial_dev = 'ttyS0'
 else:
   partial_serial_dev = 'ttyAMA0'
-  
+
 serial_dev = '/dev/%s' % partial_serial_dev
 stop_getty = 'sudo systemctl stop serial-getty@%s.service' % partial_serial_dev
 start_getty = 'sudo systemctl start serial-getty@%s.service' % partial_serial_dev
