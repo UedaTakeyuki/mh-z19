@@ -34,6 +34,10 @@ start_getty = 'sudo systemctl start serial-getty@%s.service' % partial_serial_de
 # major version of running python
 p_ver = platform.python_version_tuple()[0]
 
+def set_serialdevice(serialdevicename):
+  global serial_dev
+  serial_dev = serialdevicename
+
 def connect_serial():
   return serial.Serial(serial_dev,
                         baudrate=9600,
@@ -163,6 +167,11 @@ if __name__ == '__main__':
     description='''return CO2 concentration as object as {'co2': 416}''',
   )
   group = parser.add_mutually_exclusive_group()
+
+  group.add_argument("--serial_device",
+                      type=str,
+                      help='''Set file name of using serial device''')
+
   group.add_argument("--version",
                       action='store_true',
                       help='''show version''')
@@ -189,6 +198,9 @@ if __name__ == '__main__':
                       help='''Set detection range as 2000''')
 
   args = parser.parse_args()
+
+  if args.serial_device is not None:
+    set_serialdevice(args.serial_device)
 
   if args.abc_on:
     abc_on()
