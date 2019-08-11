@@ -170,7 +170,7 @@ if __name__ == '__main__':
 
   group.add_argument("--serial_device",
                       type=str,
-                      help='''Set file name of using serial device''')
+                      help='''Use this serial device file''')
 
   group.add_argument("--version",
                       action='store_true',

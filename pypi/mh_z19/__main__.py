@@ -12,6 +12,11 @@ parser = argparse.ArgumentParser(
   description='''return CO2 concentration as object as {'co2': 416}''',
 )
 group = parser.add_mutually_exclusive_group()
+
+group.add_argument("--serial_device",
+                    type=str,
+                    help='''Use this serial device file''')
+
 group.add_argument("--version",
                     action='store_true',
                     help='''show version''')
@@ -38,6 +43,9 @@ parser.add_argument("--detection_range_2000",
                     help='''Set detection range as 2000''')
 
 args = parser.parse_args()
+
+if args.serial_device is not None:
+  mh_z19.set_serialdevice(args.serial_device)
 
 if args.abc_on:
   mh_z19.abc_on()

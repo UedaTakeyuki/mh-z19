@@ -31,6 +31,10 @@ start_getty = 'sudo systemctl start serial-getty@%s.service' % partial_serial_de
 # major version of running python
 p_ver = platform.python_version_tuple()[0]
 
+def set_serialdevice(serialdevicename):
+  global serial_dev
+  serial_dev = serialdevicename
+
 def connect_serial():
   return serial.Serial(serial_dev,
                         baudrate=9600,
