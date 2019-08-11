@@ -212,6 +212,13 @@ Despite, I think the TT value might NOT be related to the ambient temperature, b
 So, returned temperature value might be not match with real temperature.
 Please refer detail about my argument as [Is the undocumented TT value on the responses of command 0x86 really related to the ambient temperature?](https://github.com/UedaTakeyuki/mh-z19/wiki/Is-the-undocumented-TT-value-on-the-responses-of-command-0x86-really-related-to-the-ambient-temperature%3F).
 
+### Use specific serial device.
+In case you should use specific serial device insted of Raspberry Pi default serial device which this library automatically select, for example in case to need to use /dev/ttyUSB0 for **FT232 usb-serial converter** as [issue#12](https://github.com/UedaTakeyuki/mh-z19/issues/12), you can specify serial device by **--serial_device** option as follows:
+
+```
+sudo python -m mh_z19 --serial_device /dev/ttyUSB0
+```
+
 ### Q&A
 Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/mh-z19/issues) without hesitation! 
 
