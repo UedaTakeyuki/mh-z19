@@ -1,5 +1,5 @@
 # mh-z19
-Read CO2 concentration from mh-z19 sensor and handle it.
+Read CO<sub>2</sub> concentration from mh-z19 sensor and handle it.
 
 ![MH-Z19](https://camo.qiitausercontent.com/a270df1162ed5c3bf9968b24064b91eed0dfcc11/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e616d617a6f6e6177732e636f6d2f302f34363534342f31353739663964622d306634302d373665382d303566332d3939336132346334376431382e706e67)
 
@@ -71,9 +71,16 @@ Necessary settings including serial port enabling are taken place in this script
 
 ### Install only sensor module
 
+When using python 2.x
 ```bash:
-pip install pip install mh-z19
+pip install mh-z19
 ```
+
+When using python 3.x
+```bash:
+pip3 install mh-z19
+```
+
 The differences of the interface between each Raspberry Pi model are resolved inside this module. For example, serial device name is difference between Raspberry Pi 3 and older model, but mh-z19 module automatically detect the model and read from appropriate serial device.
 
 To use mh-z19, once you need to set up enabling serial port device on the Raspberry Pi.
@@ -183,7 +190,7 @@ The Pondslider also support ATT M2X. For detail, please refer [this](https://git
 Features about calibration (both MH-Z19 & MH-Z19B), detection range change (MH-Z19B) and ABC logic on/off(MH-Z19B) are implemented at version 0.2.1 or later.
 
 I'm afraid I've just only implemented these without test due to lack necessary devices and apparatus for the test, fx: standard concentration CO2 GAS, also MH-Z19B module.
-If you have these devices or apparatus and try to use these functions generously, I'm really appreciate your [issue report](https://github.com/UedaTakeyuki/mh-z19/issues) regardless result were positive or negative.
+If you have these devices or apparatus and try to use these functions generously, I really appreciate your [issue report](https://github.com/UedaTakeyuki/mh-z19/issues) regardless result were positive or negative.
 
 For detail please refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/CALIBRATION-&-detection-range).
 
@@ -213,7 +220,7 @@ So, returned temperature value might be not match with real temperature.
 Please refer detail about my argument as [Is the undocumented TT value on the responses of command 0x86 really related to the ambient temperature?](https://github.com/UedaTakeyuki/mh-z19/wiki/Is-the-undocumented-TT-value-on-the-responses-of-command-0x86-really-related-to-the-ambient-temperature%3F).
 
 ### Use specific serial device.
-In case you should use specific serial device insted of Raspberry Pi default serial device which this library automatically select, for example in case to need to use /dev/ttyUSB0 for **FT232 usb-serial converter** as [issue#12](https://github.com/UedaTakeyuki/mh-z19/issues/12), you can specify serial device by **--serial_device** option as follows:
+In case you should use specific serial device instead of Raspberry Pi default serial device which this library automatically select, for example in case to need to use /dev/ttyUSB0 for **FT232 usb-serial converter** as [issue#12](https://github.com/UedaTakeyuki/mh-z19/issues/12), you can specify serial device by **--serial_device** option as follows:
 
 ```
 sudo python -m mh_z19 --serial_device /dev/ttyUSB0
