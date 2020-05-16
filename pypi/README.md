@@ -125,6 +125,12 @@ In case you should use specific serial device insted of Raspberry Pi default ser
 sudo python -m mh_z19 --serial_device /dev/ttyUSB0
 ```
 
+### How to use without root permission.
+See this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-use-without-root-permission.).
+
+### How to use in your program.
+See this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-use-in-your-program.).
+
 ### Q&A
 Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/mh-z19/issues) without hesitation! 
 
@@ -144,3 +150,4 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 0.3.8.5  2019.04.21  Merge [Pull Request #9](https://github.com/UedaTakeyuki/mh-z19/pull/9). Thanks [WO15](https://github.com/WO15)!
 - 0.3.9  2019.05.06  Revise the serial port selection logic. Support using **PL011** uart on Raspberry Pi **Model 3 and Zero W** which is selected by setting dtoverlay=**pi3-miniuart-bt** or dtoverlay=**pi3-disable-bt**. Thanks **片岡さん** for your kindly [report](https://qiita.com/yukataoka/items/a3b4065e8210b8f372ff) including this issue!
 - 0.4.1 2019.08.11 Add --serial_device option as solution of [issue#12](https://github.com/UedaTakeyuki/mh-z19/issues/12). Thanks [Actpohomoc](https://github.com/Actpohomoc) and [TBR-BRD](https://github.com/TBR-BRD)!
+- 0.5.1 2020.05.16 Add **--serial_console_untouched** option to support **execution without sudo** asked as [issue#17](https://github.com/UedaTakeyuki/mh-z19/issues/17). Thanks [ralphbe91](https://github.com/ralphbe91)!

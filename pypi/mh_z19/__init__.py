@@ -13,7 +13,7 @@ import platform
 import os.path
 
 # setting
-version = "0.3.9"
+version = "0.5.1"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 
@@ -25,11 +25,23 @@ else:
   partial_serial_dev = 'ttyAMA0'
   
 serial_dev = '/dev/%s' % partial_serial_dev
-stop_getty = 'sudo systemctl stop serial-getty@%s.service' % partial_serial_dev
-start_getty = 'sudo systemctl start serial-getty@%s.service' % partial_serial_dev
-  
+#stop_getty = 'sudo systemctl stop serial-getty@%s.service' % partial_serial_dev
+#start_getty = 'sudo systemctl start serial-getty@%s.service' % partial_serial_dev
+#start_getty = ['sudo', 'systemctl', 'start', 'serial-getty@%s.service' % partial_serial_dev]
+#stop_getty = ['sudo', 'systemctl', 'stop', 'serial-getty@%s.service' % partial_serial_dev]
+
 # major version of running python
 p_ver = platform.python_version_tuple()[0]
+
+def start_getty():
+#  p = subprocess.call(start_getty, stdout=subprocess.PIPE, shell=True)
+  start_getty = ['sudo', 'systemctl', 'start', 'serial-getty@%s.service' % partial_serial_dev]
+  p = subprocess.call(start_getty)
+
+def stop_getty():
+#  p = subprocess.call(stop_getty, stdout=subprocess.PIPE, shell=True)
+  stop_getty = ['sudo', 'systemctl', 'stop', 'serial-getty@%s.service' % partial_serial_dev]
+  p = subprocess.call(stop_getty)
 
 def set_serialdevice(serialdevicename):
   global serial_dev
@@ -61,15 +73,20 @@ def mh_z19():
   except:
      traceback.print_exc()
 
-def read():
-  p = subprocess.call(stop_getty, stdout=subprocess.PIPE, shell=True)
+def read(serial_console_untouched=False):
+  if not serial_console_untouched:
+    stop_getty()
+
   result = mh_z19()
-  p = subprocess.call(start_getty, stdout=subprocess.PIPE, shell=True)
+
+  if not serial_console_untouched:
+    start_getty()
   if result is not None:
     return result
 
-def read_all():
-  p = subprocess.call(stop_getty, stdout=subprocess.PIPE, shell=True)
+def read_all(serial_console_untouched=False):
+  if not serial_console_untouched:
+    stop_getty()
   try:
     ser = connect_serial()
     while 1:
@@ -97,26 +114,32 @@ def read_all():
   except:
      traceback.print_exc()
 
-  p = subprocess.call(start_getty, stdout=subprocess.PIPE, shell=True)
+  if not serial_console_untouched:
+    start_getty()
   if result is not None:
     return result
 
-def abc_on():
-  p = subprocess.call(stop_getty, stdout=subprocess.PIPE, shell=True)
+def abc_on(serial_console_untouched=False):
+  if not serial_console_untouched:
+    stop_getty()
   ser = connect_serial()
   result=ser.write(b"\xff\x01\x79\xa0\x00\x00\x00\x00\xe6")
   ser.close()
-  p = subprocess.call(start_getty, stdout=subprocess.PIPE, shell=True)
+  if not serial_console_untouched:
+    start_getty()
 
-def abc_off():
-  p = subprocess.call(stop_getty, stdout=subprocess.PIPE, shell=True)
+def abc_off(serial_console_untouched=False):
+  if not serial_console_untouched:
+    stop_getty()
   ser = connect_serial()
   result=ser.write(b"\xff\x01\x79\x00\x00\x00\x00\x00\x86")
   ser.close()
-  p = subprocess.call(start_getty, stdout=subprocess.PIPE, shell=True)
+  if not serial_console_untouched:
+    start_getty()
 
-def span_point_calibration(span):
-  p = subprocess.call(stop_getty, stdout=subprocess.PIPE, shell=True)
+def span_point_calibration(span, serial_console_untouched=False):
+  if not serial_console_untouched:
+    stop_getty()
   ser = connect_serial()
   if p_ver == '2':
     b3 = span / 256;
@@ -128,31 +151,38 @@ def span_point_calibration(span):
   request = b"\xff\x01\x88" + byte3 + byte4 + b"\x00\x00\x00" + c
   result = ser.write(request)
   ser.close()
-  p = subprocess.call(start_getty, stdout=subprocess.PIPE, shell=True)
+  if not serial_console_untouched:
+    start_getty()
 
-def zero_point_calibration():
-  p = subprocess.call(stop_getty, stdout=subprocess.PIPE, shell=True)
+def zero_point_calibration(serial_console_untouched=False):
+  if not serial_console_untouched:
+    stop_getty()
   ser = connect_serial()
   request = b"\xff\x01\x87\x00\x00\x00\x00\x00\x78"
   result = ser.write(request)
   ser.close()
-  p = subprocess.call(start_getty, stdout=subprocess.PIPE, shell=True)
+  if not serial_console_untouched:
+    start_getty()
 
-def detection_range_5000():
-  p = subprocess.call(stop_getty, stdout=subprocess.PIPE, shell=True)
+def detection_range_5000(serial_console_untouched=False):
+  if not serial_console_untouched:
+    stop_getty()
   ser = connect_serial()
   request = b"\xff\x01\x99\x00\x00\x00\x13\x88\xcb"
   result = ser.write(request)
   ser.close()
-  p = subprocess.call(start_getty, stdout=subprocess.PIPE, shell=True)
+  if not serial_console_untouched:
+    start_getty()
 
-def detection_range_2000():
-  p = subprocess.call(stop_getty, stdout=subprocess.PIPE, shell=True)
+def detection_range_2000(serial_console_untouched=False):
+  if not serial_console_untouched:
+    stop_getty()
   ser = connect_serial()
   request = b"\xff\x01\x99\x00\x00\x00\x07\xd0\x8F"
   result = ser.write(request)
   ser.close()
-  p = subprocess.call(start_getty, stdout=subprocess.PIPE, shell=True)
+  if not serial_console_untouched:
+    start_getty()
 
 def checksum(array):
   return struct.pack('B', 0xff - (sum(array) % 0x100) + 1)
