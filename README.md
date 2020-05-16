@@ -261,5 +261,5 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 2.3.9  2019.05.06  Revise the serial port selection logic. Support using **PL011** uart on Raspberry Pi **Model 3 and Zero W** which is selected by setting dtoverlay=**pi3-miniuart-bt** or dtoverlay=**pi3-disable-bt**. Thanks **片岡さん** for your kindly [report](https://qiita.com/yukataoka/items/a3b4065e8210b8f372ff) including this issue!
 - 2.4.1 2019.08.11 Add --serial_device option as solution of [issue#12](https://github.com/UedaTakeyuki/mh-z19/issues/12). Thanks [Actpohomoc](https://github.com/Actpohomoc) and [TBR-BRD](https://github.com/TBR-BRD)!
 - 2.4.2 2019.12.12  Merge [Pull Request #15](https://github.com/UedaTakeyuki/mh-z19/pull/15). Thanks [WO15](https://github.com/WO15)!
-- 2.5.1 2020.05.16 Add **--serial_console_untouched** option to support non root execution asked as [issue#17](https://github.com/UedaTakeyuki/mh-z19/issues/17) by [ralphbe91](https://github.com/ralphbe91)
+- 2.5.1 2020.05.16 Add **--serial_console_untouched** option to support **execution without sudo** asked as [issue#17](https://github.com/UedaTakeyuki/mh-z19/issues/17) by [ralphbe91](https://github.com/ralphbe91)
 
