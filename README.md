@@ -253,7 +253,7 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 2.0.0  2019.01.18  Add Calibration, ABC on/off requested by [this issue](https://github.com/UedaTakeyuki/mh-z19/issues/1). Please refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/module).
 - 0.3.5  2019.01.22  Both Python2 & Python3 support
 - 2.3.6  2019.01.22  Merge [Pull Request #3](https://github.com/UedaTakeyuki/mh-z19/pull/3) & [Pull Request #4](https://github.com/UedaTakeyuki/mh-z19/pull/4). Thanks [David](https://github.com/kostaldavid8)!
-- 2.3.7  2019.02.25  Add --all option which requested as [issue#5](https://github.com/UedaTakeyuki/mh-z19/issues/5), thanks [Rafał](https://github.com/rzarajczyk)!
+- 2.3.7  2019.02.25  Add **--all** option which requested as [issue#5](https://github.com/UedaTakeyuki/mh-z19/issues/5), thanks [Rafał](https://github.com/rzarajczyk)!
 - 2.3.8  2019.04.16  Merge [Pull Request #7](https://github.com/UedaTakeyuki/mh-z19/pull/7). Thanks [Alexander](https://github.com/belibak)!
 - 2.3.8.1  2019.04.20  Merge [Pull Request #8](https://github.com/UedaTakeyuki/mh-z19/pull/8). Thanks [WO15](https://github.com/WO15)!
 - 2.3.8.5  2019.04.21  Merge [Pull Request #9](https://github.com/UedaTakeyuki/mh-z19/pull/9). Thanks [WO15](https://github.com/WO15)!
@@ -261,4 +261,5 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 2.3.9  2019.05.06  Revise the serial port selection logic. Support using **PL011** uart on Raspberry Pi **Model 3 and Zero W** which is selected by setting dtoverlay=**pi3-miniuart-bt** or dtoverlay=**pi3-disable-bt**. Thanks **片岡さん** for your kindly [report](https://qiita.com/yukataoka/items/a3b4065e8210b8f372ff) including this issue!
 - 2.4.1 2019.08.11 Add --serial_device option as solution of [issue#12](https://github.com/UedaTakeyuki/mh-z19/issues/12). Thanks [Actpohomoc](https://github.com/Actpohomoc) and [TBR-BRD](https://github.com/TBR-BRD)!
 - 2.4.2 2019.12.12  Merge [Pull Request #15](https://github.com/UedaTakeyuki/mh-z19/pull/15). Thanks [WO15](https://github.com/WO15)!
+- 2.5.1 2020.05.16 Add **--serial_console_untouched** option to support non root execution asked as [issue#17](https://github.com/UedaTakeyuki/mh-z19/issues/17) by [ralphbe91](https://github.com/ralphbe91)
 
