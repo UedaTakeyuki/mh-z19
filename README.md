@@ -226,6 +226,12 @@ In case you should use specific serial device instead of Raspberry Pi default se
 sudo python -m mh_z19 --serial_device /dev/ttyUSB0
 ```
 
+### How to use without root permission.
+See this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-use-without-root-permission.)
+
+### How to use in your program.
+See this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-use-in-your-program.)
+
 ### Q&A
 Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/mh-z19/issues) without hesitation! 
 
