@@ -94,7 +94,7 @@ If you have these devices or apparatus and try to use these functions generously
 For detail please refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/CALIBRATION-&-detection-range).
 
 ### Undocumented response values of 0x86 command.
-The [Revspace/MHZ19](https://revspace.nl/MHZ19#Command_0x86_.28read_concentration.29) shows values undocumented on the official datasheets([MH-Z19](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf), [MH-Z19B](https://www.winsen-sensor.com/d/files/infrared-gas-sensor/mh-z19b-co2-ver1_0.pdf)). In accordance with this, **--all** option add these values in the return json value as follows:
+The [Revspace/MHZ19](https://revspace.nl/MHZ19#Command_0x86_.28read_concentration.29) shows values undocumented on the official datasheets([MH-Z19](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf), [MH-Z19B](https://www.winsen-sensor.com/d/files/MH-Z19B.pdf)). In accordance with this, **--all** option add these values in the return json value as follows:
 
 ```bash:
 sudo python -m mh_z19 --all
@@ -113,11 +113,6 @@ or call **read_all()** function as follows:
 >>> 
 ```
 
-Despite, I think the TT value might NOT be related to the ambient temperature, but also this might be an internal thermal sensor value which is pair with a infrared heater they are necessary for measuring CO2 concentration by NDIR (Non-dispersive Infrared) method.
-
-So, returned temperature value might not match with real temperature.
-Please refer detail about my argument as [Is the undocumented TT value on the responses of command 0x86 really related to the ambient temperature?](https://github.com/UedaTakeyuki/mh-z19/wiki/Is-the-undocumented-TT-value-on-the-responses-of-command-0x86-really-related-to-the-ambient-temperature%3F).
-
 ### Use specific serial device.
 In case you should use specific serial device insted of Raspberry Pi default serial device which this library automatically select, for example in case to need to use /dev/ttyUSB0 for **FT232 usb-serial converter** as [issue#12](https://github.com/UedaTakeyuki/mh-z19/issues/12), you can specify serial device by **--serial_device** option as follows:
 
@@ -133,6 +128,18 @@ See this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-use-in-your-p
 
 ### Q&A
 Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/mh-z19/issues) without hesitation! 
+
+### Blog
+- [How to Measure ROOM CO2 concentration with 20$ sensor "MH-Z19" and Raspberry Pi.](https://monitorserviceatelierueda.blogspot.com/2018/11/how-to-measure-room-co2-concentration.html)
+- [Monitoring all over the world with 3G Network for not more than 10$ monthly payment.](https://monitorserviceatelierueda.blogspot.com/2018/10/continuous-monitoring-all-over-world.html)
+- [How to make shareable SD card by Raspberry Pi & PC.](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-shareable-sd-card-by.html)
+
+## References
+
+- [MH-H19B DataSheet version 1.5](https://www.winsen-sensor.com/d/files/MH-Z19B.pdf)
+- [MH-H19 DataSheet version 1.0](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf)
+- [MH-H19B DataSheet version 1.0](https://www.winsen-sensor.com/d/files/infrared-gas-sensor/mh-z19b-co2-ver1_0.pdf)
+- [RevSpace](https://revspace.nl/MHZ19#Setting_the_measurement_range)
 
 ## history
 - 0.1.1  2018.11.05  first version self-forked from [slider](https://github.com/UedaTakeyuki/slider).
@@ -151,3 +158,5 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 0.3.9  2019.05.06  Revise the serial port selection logic. Support using **PL011** uart on Raspberry Pi **Model 3 and Zero W** which is selected by setting dtoverlay=**pi3-miniuart-bt** or dtoverlay=**pi3-disable-bt**. Thanks **片岡さん** for your kindly [report](https://qiita.com/yukataoka/items/a3b4065e8210b8f372ff) including this issue!
 - 0.4.1 2019.08.11 Add --serial_device option as solution of [issue#12](https://github.com/UedaTakeyuki/mh-z19/issues/12). Thanks [Actpohomoc](https://github.com/Actpohomoc) and [TBR-BRD](https://github.com/TBR-BRD)!
 - 0.5.1 2020.05.16 Add **--serial_console_untouched** option to support **execution without sudo** asked as [issue#17](https://github.com/UedaTakeyuki/mh-z19/issues/17). Thanks [ralphbe91](https://github.com/ralphbe91)!
+- 0.5.2 2020.06.30  Update the link for datasheet of MH-Z19B from version 1.0 to version 1.5 based be pointed it out as [issue#18](https://github.com/UedaTakeyuki/mh-z19/issues/18). Thanks [WO15](https://github.com/WO15)!
+
