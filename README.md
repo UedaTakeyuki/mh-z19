@@ -195,7 +195,7 @@ If you have these devices or apparatus and try to use these functions generously
 For detail please refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/CALIBRATION-&-detection-range).
 
 ### Undocumented response values of 0x86 command.
-The [Revspace/MHZ19](https://revspace.nl/MHZ19#Command_0x86_.28read_concentration.29) shows values undocumented on the official datasheets ([MH-Z19](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf), [MH-Z19B](https://www.winsen-sensor.com/d/files/infrared-gas-sensor/mh-z19b-co2-ver1_0.pdf)). In accordance with this, **--all** option add these values in the return json value as follows:
+The [Revspace/MHZ19](https://revspace.nl/MHZ19#Command_0x86_.28read_concentration.29) shows values undocumented on the official datasheets ([MH-Z19](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf), [MH-Z19B](https://www.winsen-sensor.com/d/files/MH-Z19B.pdf)). In accordance with this, **--all** option add these values in the return json value as follows:
 
 ```bash:
 sudo python -m mh_z19 --all
@@ -213,11 +213,6 @@ or call **read_all()** function as follows:
 {'SS': 232, 'UhUl': 10738, 'TT': 61, 'co2': 734, 'temperature': 21}
 >>> 
 ```
-
-Despite, I think the TT value might NOT be related to the ambient temperature, but also this might be a internal thermal sensor value which is pair with a infrared heater they are necessary for measuring CO2 concentration by NDIR (Non-dispersive Infrared) method.
-
-So, returned temperature value might be not match with real temperature.
-Please refer detail about my argument as [Is the undocumented TT value on the responses of command 0x86 really related to the ambient temperature?](https://github.com/UedaTakeyuki/mh-z19/wiki/Is-the-undocumented-TT-value-on-the-responses-of-command-0x86-really-related-to-the-ambient-temperature%3F).
 
 ### Use specific serial device.
 In case you should use specific serial device instead of Raspberry Pi default serial device which this library automatically select, for example in case to need to use /dev/ttyUSB0 for **FT232 usb-serial converter** as [issue#12](https://github.com/UedaTakeyuki/mh-z19/issues/12), you can specify serial device by **--serial_device** option as follows:
@@ -242,8 +237,9 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 
 ## References
 
-- [MH-H19 DataSheet](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf)
-- [MH-H19B DataSheet](https://www.winsen-sensor.com/d/files/infrared-gas-sensor/mh-z19b-co2-ver1_0.pdf)
+- [MH-H19B DataSheet version 1.5](https://www.winsen-sensor.com/d/files/MH-Z19B.pdf)
+- [MH-H19 DataSheet version 1.0](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf)
+- [MH-H19B DataSheet version 1.0](https://www.winsen-sensor.com/d/files/infrared-gas-sensor/mh-z19b-co2-ver1_0.pdf)
 - [RevSpace](https://revspace.nl/MHZ19#Setting_the_measurement_range)
 
 
@@ -262,4 +258,5 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 2.4.1 2019.08.11 Add --serial_device option as solution of [issue#12](https://github.com/UedaTakeyuki/mh-z19/issues/12). Thanks [Actpohomoc](https://github.com/Actpohomoc) and [TBR-BRD](https://github.com/TBR-BRD)!
 - 2.4.2 2019.12.12  Merge [Pull Request #15](https://github.com/UedaTakeyuki/mh-z19/pull/15). Thanks [WO15](https://github.com/WO15)!
 - 2.5.1 2020.05.16 Add **--serial_console_untouched** option to support **execution without sudo** asked as [issue#17](https://github.com/UedaTakeyuki/mh-z19/issues/17). Thanks [ralphbe91](https://github.com/ralphbe91)!
+- 2.5.2 2020.06.30  Update the link for datasheet of MH-Z19B from version 1.0 to version 1.5 based be pointed it out by [WO15](https://github.com/WO15) as [issue#18](https://github.com/UedaTakeyuki/mh-z19/issues/5). Thanks [WO15](https://github.com/WO15)!
 
