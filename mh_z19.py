@@ -16,7 +16,7 @@ import json
 import os.path
 
 # setting
-version = "0.5.1"
+version = "2.6.1"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 
@@ -163,6 +163,16 @@ def zero_point_calibration(serial_console_untouched=False):
   if not serial_console_untouched:
     start_getty()
 
+def detection_range_10000(serial_console_untouched=False):
+  if not serial_console_untouched:
+    stop_getty()
+  ser = connect_serial()
+  request = b"\xff\x01\x99\x00\x00\x00\x27\x10\x2F"
+  result = ser.write(request)
+  ser.close()
+  if not serial_console_untouched:
+    start_getty()
+
 def detection_range_5000(serial_console_untouched=False):
   if not serial_console_untouched:
     stop_getty()
@@ -221,6 +231,9 @@ if __name__ == '__main__':
   parser.add_argument("--zero_point_calibration",
                       action='store_true',
                       help='''Call calibration function with ZERO point''')
+  parser.add_argument("--detection_range_10000",
+                      action='store_true',
+                      help='''Set detection range as 10000''')
   parser.add_argument("--detection_range_5000",
                       action='store_true',
                       help='''Set detection range as 5000''')
@@ -245,6 +258,9 @@ if __name__ == '__main__':
   elif args.zero_point_calibration:
     print ("Call Calibration with ZERO point.")
     zero_point_calibration(args.serial_console_untouched)
+  elif args.detection_range_10000:
+    detection_range_10000(args.serial_console_untouched)
+    print ("Set Detection range as 10000.")
   elif args.detection_range_5000:
     detection_range_5000(args.serial_console_untouched)
     print ("Set Detection range as 5000.")

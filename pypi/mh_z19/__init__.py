@@ -13,7 +13,7 @@ import platform
 import os.path
 
 # setting
-version = "0.5.1"
+version = "0.6.1"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 
@@ -159,6 +159,16 @@ def zero_point_calibration(serial_console_untouched=False):
     stop_getty()
   ser = connect_serial()
   request = b"\xff\x01\x87\x00\x00\x00\x00\x00\x78"
+  result = ser.write(request)
+  ser.close()
+  if not serial_console_untouched:
+    start_getty()
+
+def detection_range_10000(serial_console_untouched=False):
+  if not serial_console_untouched:
+    stop_getty()
+  ser = connect_serial()
+  request = b"\xff\x01\x99\x00\x00\x00\x27\x10\x2F"
   result = ser.write(request)
   ser.close()
   if not serial_console_untouched:

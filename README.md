@@ -259,4 +259,5 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 2.4.2 2019.12.12  Merge [Pull Request #15](https://github.com/UedaTakeyuki/mh-z19/pull/15). Thanks [WO15](https://github.com/WO15)!
 - 2.5.1 2020.05.16 Add **--serial_console_untouched** option to support **execution without sudo** asked as [issue#17](https://github.com/UedaTakeyuki/mh-z19/issues/17). Thanks [ralphbe91](https://github.com/ralphbe91)!
 - 2.5.2 2020.06.30  Update the link for datasheet of MH-Z19B from version 1.0 to version 1.5 based be pointed it out as [issue#18](https://github.com/UedaTakeyuki/mh-z19/issues/18). Thanks [WO15](https://github.com/WO15)!
+- 2.6.1 2020.07.07 Add **--detection_range_10000** option to support **Set 0~10000ppm detection range** asked as [issue#19](https://github.com/UedaTakeyuki/mh-z19/issues/19). Thanks [WO15](https://github.com/WO15)!
 

@@ -40,6 +40,9 @@ parser.add_argument("--span_point_calibration",
 parser.add_argument("--zero_point_calibration",
                     action='store_true',
                     help='''Call calibration function with ZERO point''')
+parser.add_argument("--detection_range_10000",
+                    action='store_true',
+                    help='''Set detection range as 10000''')
 parser.add_argument("--detection_range_5000",
                     action='store_true',
                     help='''Set detection range as 5000''')
@@ -66,6 +69,9 @@ elif args.span_point_calibration is not None:
 elif args.zero_point_calibration:
   print ("Call Calibration with ZERO point.")
   mh_z19.zero_point_calibration(args.serial_console_untouched)
+elif args.detection_range_10000:
+  mh_z19.detection_range_10000(args.serial_console_untouched)
+  print ("Set Detection range as 10000.")
 elif args.detection_range_5000:
   mh_z19.detection_range_5000(args.serial_console_untouched)
   print ("Set Detection range as 5000.")
