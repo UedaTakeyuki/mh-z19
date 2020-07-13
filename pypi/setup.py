@@ -24,6 +24,5 @@ setup(
         'getrpimodel',
         'pyserial',
         'requests',
-        'argparse'
     ]
 )
