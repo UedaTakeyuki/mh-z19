@@ -12,8 +12,10 @@ import struct
 import platform
 import os.path
 
+from mh_z19.const import VERSION as __version__
+
 # setting
-version = "0.6.1"
+version = '{}.{}.{}'.format(*__version__)
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 
