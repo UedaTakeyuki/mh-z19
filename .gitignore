@@ -4,3 +4,4 @@ send2monitor.py
 handlers
 pypi/dist
 pypi/mh_z19.egg-info
+*.sw[op]
