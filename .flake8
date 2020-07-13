@@ -1,0 +1,11 @@
+[flake8]
+
+ignore =
+    # H401: docstring should not start with a space
+    H401,
+
+exclude =
+    .git,
+    __pycache__,
+
+max-line-length = 92
