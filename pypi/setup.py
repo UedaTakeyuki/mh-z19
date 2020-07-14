@@ -17,6 +17,9 @@ setup(
     license='MIT',
     url='https://github.com/UedaTakeyuki/mh-z19',  # use the URL to the github repo
     keywords=['sensor', 'IoT', 'Raspberry Pi', 'mh-z19', 'CO2'],  # arbitrary keywords
+    entry_points={
+        'console_scripts': ['mh-z19 = mh_z19.cli:main']
+    },
     classifiers=[
         'Development Status :: 4 - Beta',
         'Programming Language :: Python',
