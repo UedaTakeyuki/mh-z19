@@ -10,7 +10,8 @@ class RPi_MH_Z19B:
     __serial_file_path = ''
     __serial_object = None
 
-    def __init__(self, serial_file_path: str = CONST.DEFAULT_SERIAL_FILE_PATH, **kwargs):
+    def __init__(self, serial_file_path: str = utils.get_default_serial_file_path(),
+                 **kwargs):
         self.__serial_file_path = serial_file_path
         self.__serial_object = self.__get_serial_object(serial_file_path)
 
@@ -18,8 +19,7 @@ class RPi_MH_Z19B:
         self.__serial_object.close()
 
     @staticmethod
-    def __get_serial_object(serial_file_path: str = CONST.DEFAULT_SERIAL_FILE_PATH,
-                            **kwargs) -> serial.Serial:
+    def __get_serial_object(serial_file_path: str, **kwargs) -> serial.Serial:
         return serial.Serial(port=serial_file_path,
                              baudrate=CONST.BAUD_RATE,
                              bytesize=serial.EIGHTBITS,
@@ -36,7 +36,7 @@ class RPi_MH_Z19B:
     @classmethod
     def enable_self_calibration(
         cls,
-        serial_file_path: str = CONST.DEFAULT_SERIAL_FILE_PATH
+        serial_file_path: str = utils.get_default_serial_file_path()
     ) -> None:
         cls.__send_one_shot_command(serial_file_path,
                                     CONST.ENABLE_SELF_CALIBRATION_COMMAND_BYTE_SEQUENCE)
@@ -44,7 +44,7 @@ class RPi_MH_Z19B:
     @classmethod
     def disable_self_calibration(
         cls,
-        serial_file_path: str = CONST.DEFAULT_SERIAL_FILE_PATH
+        serial_file_path: str = utils.get_default_serial_file_path()
     ) -> None:
         cls.__send_one_shot_command(serial_file_path,
                                     CONST.DISABLE_SELF_CALIBRATION_COMMAND_BYTE_SEQUENCE)
@@ -52,7 +52,7 @@ class RPi_MH_Z19B:
     @classmethod
     def set_detection_range_2000(
         cls,
-        serial_file_path: str = CONST.DEFAULT_SERIAL_FILE_PATH
+        serial_file_path: str = utils.get_default_serial_file_path()
     ) -> None:
         cls.__send_one_shot_command(serial_file_path,
                                     CONST.SET_DETECTION_RANGE_2000_COMMAND_BYTE_SEQUENCE)
@@ -60,7 +60,7 @@ class RPi_MH_Z19B:
     @classmethod
     def set_detection_range_5000(
         cls,
-        serial_file_path: str = CONST.DEFAULT_SERIAL_FILE_PATH
+        serial_file_path: str = utils.get_default_serial_file_path()
     ) -> None:
         cls.__send_one_shot_command(serial_file_path,
                                     CONST.SET_DETECTION_RANGE_5000_COMMAND_BYTE_SEQUENCE)
@@ -68,7 +68,7 @@ class RPi_MH_Z19B:
     @classmethod
     def set_detection_range_10000(
         cls,
-        serial_file_path: str = CONST.DEFAULT_SERIAL_FILE_PATH
+        serial_file_path: str = utils.get_default_serial_file_path()
     ) -> None:
         cls.__send_one_shot_command(serial_file_path,
                                     CONST.SET_DETECTION_RANGE_10000_COMMAND_BYTE_SEQUENCE)
@@ -76,7 +76,7 @@ class RPi_MH_Z19B:
     @classmethod
     def calibrate_zero_point(
         cls,
-        serial_file_path: str = CONST.DEFAULT_SERIAL_FILE_PATH
+        serial_file_path: str = utils.get_default_serial_file_path()
     ) -> None:
         cls.__send_one_shot_command(serial_file_path,
                                     CONST.CALIBRATE_ZERO_POINT_COMMAND_BYTE_SEQUENCE)
@@ -85,7 +85,7 @@ class RPi_MH_Z19B:
     def calibrate_span_point(
         cls,
         span_point_value: int,
-        serial_file_path: str = CONST.DEFAULT_SERIAL_FILE_PATH
+        serial_file_path: str = utils.get_default_serial_file_path()
     ) -> None:
         calibrate_span_point_command_byte_sequence = \
             bytes(itertools.chain(

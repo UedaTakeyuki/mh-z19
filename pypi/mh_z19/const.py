@@ -1,11 +1,7 @@
 import itertools
 
-from mh_z19 import utils
-
 
 VERSION = (0, 6, 1)
-
-DEFAULT_SERIAL_FILE_PATH = utils.get_default_serial_device()
 
 BAUD_RATE = 9600
 

@@ -8,7 +8,7 @@ def compute_checksum(array: list):
     return struct.pack('B', 0xff - (sum(array) % 0x100) + 1)
 
 
-def get_default_serial_device() -> str:
+def get_default_serial_file_path() -> str:
     pi_model = getrpimodel.model()
     pi_model_strict = getrpimodel.model_strict()
 
