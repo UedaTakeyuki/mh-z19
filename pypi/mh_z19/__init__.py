@@ -13,7 +13,7 @@ import platform
 import os.path
 
 # setting
-version = "0.6.1"
+version = "0.6.3"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 

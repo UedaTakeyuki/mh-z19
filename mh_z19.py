@@ -16,7 +16,7 @@ import json
 import os.path
 
 # setting
-version = "2.6.1"
+version = "2.6.3"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 
