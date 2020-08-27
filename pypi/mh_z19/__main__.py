@@ -53,7 +53,7 @@ parser.add_argument("--detection_range_2000",
 args = parser.parse_args()
 
 if args.serial_device is not None:
-  set_serialdevice(args.serial_device)
+  mh_z19.set_serialdevice(args.serial_device)
 
 #print(args.serial_console_untouched)
 
