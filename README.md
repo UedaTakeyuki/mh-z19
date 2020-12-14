@@ -227,7 +227,7 @@ See this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-use-without-r
 ### How to use in your program.
 See this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-use-in-your-program.).
 
-### In case you can't get the value
+### In case you can't get the value.
 As [nincube8](https://github.com/nincube8) suggested that the [pull up](https://github.com/UedaTakeyuki/mh-z19/issues/22#issuecomment-683393350) by [1-5kΩ register](https://github.com/UedaTakeyuki/mh-z19/issues/26#issuecomment-744039360) can be working solution. Thank you [nincube8](https://github.com/nincube8)!
 
 ### Q&A
