@@ -192,6 +192,8 @@ Features about calibration (both MH-Z19 & MH-Z19B), detection range change (MH-Z
 I'm afraid I've just only implemented these without test due to lack necessary devices and apparatus for the test, fx: standard concentration CO2 GAS, also MH-Z19B module.
 If you have these devices or apparatus and try to use these functions generously, I really appreciate your [issue report](https://github.com/UedaTakeyuki/mh-z19/issues) regardless result were positive or negative.
 
+- [positive report with mh_z19b on a Raspberry Pi Zero W](https://github.com/UedaTakeyuki/mh-z19/issues/27) by [richteas75](https://github.com/richteas75), Thank you [richteas75](https://github.com/richteas75)!
+
 For detail please refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/CALIBRATION-&-detection-range).
 
 ### Undocumented response values of 0x86 command.
