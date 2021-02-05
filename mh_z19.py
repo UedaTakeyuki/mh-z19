@@ -15,10 +15,16 @@ import sys
 import json
 import os.path
 
+import RPi.GPIO as GPIO
+
 # setting
 version = "2.6.3"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
+
+# exception
+class GPIO_Edge_Timeout(Exception):
+  pass
 
 if os.path.exists('/dev/serial0'):
   partial_serial_dev = 'serial0'
@@ -193,6 +199,34 @@ def detection_range_2000(serial_console_untouched=False):
   if not serial_console_untouched:
     start_getty()
 
+def read_from_pwm(gpio=12, range=5000, ):
+  CYCLE_START_HIGHT_TIME = 2
+  TIMEOUT = 2000 # must be larger than PWM cycle time.
+
+  GPIO.setmode(GPIO.BCM)
+  GPIO.setup(gpio,GPIO.IN)
+
+  # wait falling ¯¯|_ to see end of last cycle
+  channel = GPIO.wait_for_edge(gpio, GPIO.FALLING, timeout=TIMEOUT)
+  if channel is None:
+    raise GPIO_Edge_Timeout("gpio {} edge timeout".format(gpio))
+
+  # wait rising __|¯ to catch the start of this cycle
+  channel = GPIO.wait_for_edge(gpio,GPIO.RISING, timeout=TIMEOUT)
+  if channel is None:
+    raise GPIO_Edge_Timeout("gpio {} edge timeout".format(gpio))
+  else:
+    rising = time.time() * 1000
+
+  # wait falling ¯¯|_ again to catch the end of TH duration
+  channel = GPIO.wait_for_edge(gpio, GPIO.FALLING, timeout=TIMEOUT)
+  if channel is None:
+    raise GPIO_Edge_Timeout("gpio {} edge timeout".format(gpio))
+  else:
+    falling = time.time() * 1000
+
+  return {'co2': int(falling -rising - CYCLE_START_HIGHT_TIME) / 2 *(range/500)}
+
 def checksum(array):
   return struct.pack('B', 0xff - (sum(array) % 0x100) + 1)
 
@@ -225,8 +259,10 @@ if __name__ == '__main__':
   group.add_argument("--abc_off",
                       action='store_true',
                       help='''Set ABC functionality on model B as OFF.''')
+  
   parser.add_argument("--span_point_calibration",
                       type=int,
+                      metavar="span",
                       help='''Call calibration function with SPAN point''')
   parser.add_argument("--zero_point_calibration",
                       action='store_true',
@@ -240,6 +276,23 @@ if __name__ == '__main__':
   parser.add_argument("--detection_range_2000",
                       action='store_true',
                       help='''Set detection range as 2000''')
+
+  parser.add_argument("--pwm",
+                      action='store_true',
+                      help='''Read CO2 concentration from PWM, see also `--pwm_range` and/or `--pwm_gpio`''')
+
+  parser.add_argument("--pwm_range",
+                      type=int,
+                      choices=[2000,5000,10000],
+                      default=5000,
+                      metavar="range",
+                      help='''with --pwm, use this to compute co2 concentration, default is 5000''')
+
+  parser.add_argument("--pwm_gpio",
+                      type=int,
+                      default=12,
+                      metavar="gpio(BCM)",
+                      help='''with --pwm, read from this gpio pin on RPi, default is 12''')
 
   args = parser.parse_args()
 
@@ -267,6 +320,8 @@ if __name__ == '__main__':
   elif args.detection_range_2000:
     detection_range_2000(args.serial_console_untouched)
     print ("Set Detection range as 2000.")
+  elif args.pwm:
+    print read_from_pwm(gpio=args.pwm_gpio, range=args.pwm_range, )
   elif args.version:
     print (version)
   elif args.all:
