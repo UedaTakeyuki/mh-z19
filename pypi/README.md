@@ -79,13 +79,13 @@ pi@raspberrypi:~/mh-z19 $ gpio readall
  +-----+-----+---------+------+---+---Pi B+--+---+------+---------+-----+-----+
 ```
 
-### Watch CO2 concentration on your browser 
+## Watch CO2 concentration on your browser 
 <img src="https://github.com/UedaTakeyuki/mh-z19/raw/master/pic/2018-11-20.11.23.19.png" width="24%">
 
 [MONITOR™](https://monitor3.uedasoft.com) is a free Remote Monitoring Service to show latest data on the web. You can see the current CO2 concentration value measured by your MH-Z19 device on your smartphone. For detail, please refer this [blog](https://monitorserviceatelierueda.blogspot.com/2018/11/how-to-measure-room-co2-concentration.html). 
 
 
-### Calibration, Detection range settings, and ABC(Automatic Baseline Correction) logic on/off.
+## Calibration, Detection range settings, and ABC(Automatic Baseline Correction) logic on/off.
 Features about calibration (both MH-Z19 & MH-Z19B), detection range change (MH-Z19B) and ABC logic on/off(MH-Z19B) are implemented at version 0.2.1 or later.
 
 I'm afraid I've just only implemented these without test due to lack necessary devices and apparatus for the test, fx: standard concentration CO2 gas, also MH-Z19B module.
@@ -93,7 +93,7 @@ If you have these devices or apparatus and try to use these functions generously
 
 For detail please refer this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/CALIBRATION-&-detection-range).
 
-### Undocumented response values of 0x86 command.
+## Undocumented response values of 0x86 command.
 The [Revspace/MHZ19](https://revspace.nl/MHZ19#Command_0x86_.28read_concentration.29) shows values undocumented on the official datasheets([MH-Z19](https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf), [MH-Z19B](https://www.winsen-sensor.com/d/files/MH-Z19B.pdf)). In accordance with this, **--all** option add these values in the return json value as follows:
 
 ```bash:
@@ -113,23 +113,29 @@ or call **read_all()** function as follows:
 >>> 
 ```
 
-### Use specific serial device.
+## Use specific serial device.
 In case you should use specific serial device insted of Raspberry Pi default serial device which this library automatically select, for example in case to need to use /dev/ttyUSB0 for **FT232 usb-serial converter** as [issue#12](https://github.com/UedaTakeyuki/mh-z19/issues/12), you can specify serial device by **--serial_device** option as follows:
 
 ```
 sudo python -m mh_z19 --serial_device /dev/ttyUSB0
 ```
 
-### How to use without root permission.
+## How to use without root permission.
 See this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-use-without-root-permission.).
 
-### How to use in your program.
+## How to use in your program.
 See this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/How-to-use-in-your-program.).
 
-### Q&A
+## PWM support.
+See this [wiki](https://github.com/UedaTakeyuki/mh-z19/wiki/PWM-support.).
+
+## In case you can't get the value.
+Even if cabling seems no problem and uart seems to be prepateted well but you can't get sensor value. As [nincube8](https://github.com/nincube8) suggested that the [pull up](https://github.com/UedaTakeyuki/mh-z19/issues/22#issuecomment-683393350) by [1-5kΩ register](https://github.com/UedaTakeyuki/mh-z19/issues/26#issuecomment-744039360) can be working solution. Thank you [nincube8](https://github.com/nincube8)!
+
+## Q&A
 Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/mh-z19/issues) without hesitation! 
 
-### Blog
+## Blog
 - [How to Measure ROOM CO2 concentration with 20$ sensor "MH-Z19" and Raspberry Pi.](https://monitorserviceatelierueda.blogspot.com/2018/11/how-to-measure-room-co2-concentration.html)
 - [Monitoring all over the world with 3G Network for not more than 10$ monthly payment.](https://monitorserviceatelierueda.blogspot.com/2018/10/continuous-monitoring-all-over-world.html)
 - [How to make shareable SD card by Raspberry Pi & PC.](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-shareable-sd-card-by.html)
@@ -161,4 +167,4 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 0.5.2 2020.06.30 Update the link for datasheet of MH-Z19B from version 1.0 to version 1.5 based be pointed it out as [issue#18](https://github.com/UedaTakeyuki/mh-z19/issues/18). Thanks [WO15](https://github.com/WO15)!
 - 0.6.1 2020.07.07 Add **--detection_range_10000** option to support **Set 0~10000ppm detection range** asked as [issue#19](https://github.com/UedaTakeyuki/mh-z19/issues/19). Thanks [WO15](https://github.com/WO15)!
 - 0.6.3 2020.08.27 Fix [issue#21](https://github.com/UedaTakeyuki/mh-z19/issues/21). Thanks [idegre](https://github.com/idegre)!
-
+- 3.0.0 2021.02.05 [PWM support](https://github.com/UedaTakeyuki/mh-z19/wiki/PWM-support.).

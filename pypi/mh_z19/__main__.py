@@ -34,8 +34,10 @@ group.add_argument("--abc_on",
 group.add_argument("--abc_off",
                     action='store_true',
                     help='''Set ABC functionality on model B as OFF.''')
+
 parser.add_argument("--span_point_calibration",
                     type=int,
+                    metavar="span",
                     help='''Call calibration function with SPAN point''')
 parser.add_argument("--zero_point_calibration",
                     action='store_true',
@@ -49,6 +51,23 @@ parser.add_argument("--detection_range_5000",
 parser.add_argument("--detection_range_2000",
                     action='store_true',
                     help='''Set detection range as 2000''')
+
+parser.add_argument("--pwm",
+                    action='store_true',
+                    help='''Read CO2 concentration from PWM, see also `--pwm_range` and/or `--pwm_gpio`''')
+
+parser.add_argument("--pwm_range",
+                    type=int,
+                    choices=[2000,5000,10000],
+                    default=5000,
+                    metavar="range",
+                    help='''with --pwm, use this to compute co2 concentration, default is 5000''')
+
+parser.add_argument("--pwm_gpio",
+                    type=int,
+                    default=12,
+                    metavar="gpio(BCM)",
+                    help='''with --pwm, read from this gpio pin on RPi, default is 12''')
 
 args = parser.parse_args()
 
@@ -78,6 +97,8 @@ elif args.detection_range_5000:
 elif args.detection_range_2000:
   mh_z19.detection_range_2000(args.serial_console_untouched)
   print ("Set Detection range as 2000.")
+elif args.pwm:
+  print mh_z19.read_from_pwm(gpio=args.pwm_gpio, range=args.pwm_range, )
 elif args.version:
   print (mh_z19.version)
 elif args.all:

@@ -18,7 +18,7 @@ import os.path
 import RPi.GPIO as GPIO
 
 # setting
-version = "2.6.3"
+version = "3.0.0"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 
@@ -199,7 +199,7 @@ def detection_range_2000(serial_console_untouched=False):
   if not serial_console_untouched:
     start_getty()
 
-def read_from_pwm(gpio=12, range=5000, ):
+def read_from_pwm(gpio=12, range=5000):
   CYCLE_START_HIGHT_TIME = 2
   TIMEOUT = 2000 # must be larger than PWM cycle time.
 

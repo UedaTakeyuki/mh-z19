@@ -6,7 +6,7 @@ with open("README.md") as f:
 setup(
   name = 'mh_z19',
   packages = ['mh_z19'], # this must be the same as the name above
-  version = '0.6.3',
+  version = '3.0.0',
   description = 'mh-z19 CO2 concentration sensor library for All models of Raspberry Pi',
   long_description=long_description,
   long_description_content_type="text/markdown",
@@ -15,7 +15,7 @@ setup(
   license='MIT',
   url = 'https://github.com/UedaTakeyuki/mh-z19', # use the URL to the github repo
   keywords = ['sensor', 'IoT', 'Raspberry Pi', 'mh-z19', 'CO2'], # arbitrary keywords
-  classifiers = ['Development Status :: 4 - Beta',
+  classifiers = ['Development Status :: 5 - Production/Stable',
                  'Programming Language :: Python',
                  'Topic :: Terminals'
   ],
@@ -23,6 +23,7 @@ setup(
     'getrpimodel',
     'pyserial',
     'requests',
-    'argparse'
+    'argparse',
+    'RPi.GPIO'
   ]
 )
