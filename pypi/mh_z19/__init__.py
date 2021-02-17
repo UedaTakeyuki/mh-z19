@@ -15,7 +15,7 @@ import os.path
 import RPi.GPIO as GPIO
 
 # setting
-version = "3.0.0"
+version = "3.0.1"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 

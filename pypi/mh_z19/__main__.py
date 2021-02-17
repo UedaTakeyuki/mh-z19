@@ -98,7 +98,7 @@ elif args.detection_range_2000:
   mh_z19.detection_range_2000(args.serial_console_untouched)
   print ("Set Detection range as 2000.")
 elif args.pwm:
-  print mh_z19.read_from_pwm(gpio=args.pwm_gpio, range=args.pwm_range, )
+  print (mh_z19.read_from_pwm(gpio=args.pwm_gpio, range=args.pwm_range))
 elif args.version:
   print (mh_z19.version)
 elif args.all:
