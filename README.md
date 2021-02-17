@@ -270,3 +270,4 @@ The forum is avai at [here](https://groups.google.com/g/mh_z19-users). Any quest
 - 2.6.1 2020.07.07 Add **--detection_range_10000** option to support **Set 0~10000ppm detection range** asked as [issue#19](https://github.com/UedaTakeyuki/mh-z19/issues/19). Thanks [WO15](https://github.com/WO15)!
 - 2.6.3 2020.08.27 Fix [issue#21](https://github.com/UedaTakeyuki/mh-z19/issues/21). Thanks [idegre](https://github.com/idegre)!
 - 3.0.0 2021.02.05 [PWM support](https://github.com/UedaTakeyuki/mh-z19/wiki/PWM-support.).
+- 3.0.1 2021.02.17 Fix a degradation of not running with python3. Thank you **Masahiko OHKUBO** san for your report.
