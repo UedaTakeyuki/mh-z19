@@ -28,7 +28,7 @@ class GPIO_Edge_Timeout(Exception):
 
 if os.path.exists('/dev/serial0'):
   partial_serial_dev = 'serial0'
-elif pimodel == "3 Model B" or pimodel_strict == "Zero W":
+elif pimodel == "3 Model B" or pimodel_strict == "4 Model B" or pimodel_strict == "Zero W":
   partial_serial_dev = 'ttyS0'
 else:
   partial_serial_dev = 'ttyAMA0'
