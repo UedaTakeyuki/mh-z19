@@ -18,7 +18,7 @@ import os.path
 import RPi.GPIO as GPIO
 
 # setting
-version = "3.0.0"
+version = "3.0.2"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 
@@ -28,7 +28,7 @@ class GPIO_Edge_Timeout(Exception):
 
 if os.path.exists('/dev/serial0'):
   partial_serial_dev = 'serial0'
-elif pimodel == "3 Model B" or pimodel_strict == "4 Model B" or pimodel_strict == "Zero W":
+elif pimodel == "3 Model B" or pimodel == "4 Model B" or pimodel_strict == "Zero W":
   partial_serial_dev = 'ttyS0'
 else:
   partial_serial_dev = 'ttyAMA0'
@@ -321,7 +321,7 @@ if __name__ == '__main__':
     detection_range_2000(args.serial_console_untouched)
     print ("Set Detection range as 2000.")
   elif args.pwm:
-    print read_from_pwm(gpio=args.pwm_gpio, range=args.pwm_range, )
+    print (read_from_pwm(gpio=args.pwm_gpio, range=args.pwm_range))
   elif args.version:
     print (version)
   elif args.all:
