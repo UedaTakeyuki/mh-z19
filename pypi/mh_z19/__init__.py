@@ -15,7 +15,7 @@ import os.path
 import RPi.GPIO as GPIO
 
 # setting
-version = "3.0.1"
+version = "3.0.2"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 
@@ -25,7 +25,7 @@ class GPIO_Edge_Timeout(Exception):
 
 if os.path.exists('/dev/serial0'):
   partial_serial_dev = 'serial0'
-elif pimodel == "3 Model B" or pimodel_strict == "Zero W":
+elif pimodel == "3 Model B" or pimodel == "4 Model B" or pimodel_strict == "Zero W":
   partial_serial_dev = 'ttyS0'
 else:
   partial_serial_dev = 'ttyAMA0'
