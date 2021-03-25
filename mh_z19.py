@@ -18,7 +18,7 @@ import os.path
 import RPi.GPIO as GPIO
 
 # setting
-version = "3.0.0"
+version = "3.0.1"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 
@@ -321,7 +321,7 @@ if __name__ == '__main__':
     detection_range_2000(args.serial_console_untouched)
     print ("Set Detection range as 2000.")
   elif args.pwm:
-    print read_from_pwm(gpio=args.pwm_gpio, range=args.pwm_range, )
+    print (read_from_pwm(gpio=args.pwm_gpio, range=args.pwm_range))
   elif args.version:
     print (version)
   elif args.all:
