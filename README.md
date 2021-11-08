@@ -272,3 +272,4 @@ The forum is avai at [here](https://groups.google.com/g/mh_z19-users). Any quest
 - 3.0.0 2021.02.05 [PWM support](https://github.com/UedaTakeyuki/mh-z19/wiki/PWM-support.).
 - 3.0.1 2021.02.17 Fix a degradation of not running with python3. Thank you **Masahiko OHKUBO** san for your report.
 - 3.0.2 2021.03.25 Fix to support RPi4 correctly as [issue#29](https://github.com/UedaTakeyuki/mh-z19/issues/29). Thanks [iperniaf](https://github.com/iperniaf)!
+- 3.0.3 2021.11.08 Fix [issue#35](https://github.com/UedaTakeyuki/mh-z19/issues/35). Thanks [false](https://github.com/false-git)!

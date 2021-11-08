@@ -15,7 +15,7 @@ import os.path
 import RPi.GPIO as GPIO
 
 # setting
-version = "3.0.2"
+version = "3.0.3"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 retry_count    = 3
@@ -226,6 +226,6 @@ def read_from_pwm(gpio=12, range=5000):
   return {'co2': int(falling -rising - CYCLE_START_HIGHT_TIME) / 2 *(range/500)}
 
 def checksum(array):
-  if p_ver == '2':
+  if p_ver == '2' and isinstance(array, str):
     array = [ord(c) for c in array]
   return struct.pack('B', 0xff - (sum(array) % 0x100) + 1)
