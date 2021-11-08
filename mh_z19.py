@@ -66,9 +66,9 @@ def mh_z19():
     ser = connect_serial()
     for retry in range(retry_count):
       result=ser.write(b"\xff\x01\x86\x00\x00\x00\x00\x00\x79")
-      s=convert_telegram(ser.read(9))
+      s=convert_response(ser.read(9))
 
-      if validate_telegram(s, 0x86):
+      if validate_response(s):
         return {'co2': s[2]*256 + s[3]}
   except:
      traceback.print_exc()
@@ -91,9 +91,9 @@ def read_all(serial_console_untouched=False):
     ser = connect_serial()
     for retry in range(retry_count):
       result=ser.write(b"\xff\x01\x86\x00\x00\x00\x00\x00\x79")
-      s=convert_telegram(ser.read(9))
+      s=convert_response(ser.read(9))
 
-      if validate_telegram(s, 0x86):
+      if validate_response(s):
         return {'co2': s[2]*256 + s[3],
                 'temperature': s[4] - 40,
                 'TT': s[4],
@@ -213,19 +213,17 @@ def read_from_pwm(gpio=12, range=5000):
 def checksum(array):
   return struct.pack('B', 0xff - (sum(array) % 0x100) + 1)
 
-def convert_telegram(telegram):
-  result = telegram
+def convert_response(response):
+  result = response
   if p_ver == "2":
-    result = [ord(c) for c in telegram]
+    result = [ord(c) for c in response]
   return result
 
-def validate_telegram(telegram, command):
+def validate_response(response):
   result = False
-  if len(telegram) == 9 and telegram[0] == 0xFF and telegram[1] == command:
-    csum = ord(checksum(telegram[1:8]))
-    result = csum == telegram[8]
-  else:
-    print(telegram)
+  if len(response) == 9 and response[0] == 0xFF:
+    csum = ord(checksum(response[1:8]))
+    result = csum == response[8]
   return result
 
 if __name__ == '__main__':
