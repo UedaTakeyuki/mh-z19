@@ -67,10 +67,14 @@ def mh_z19():
     ser = connect_serial()
     for retry in range(retry_count):
       result=ser.write(b"\xff\x01\x86\x00\x00\x00\x00\x00\x79")
-      s=convert_response(ser.read(9))
+      s=ser.read(9)
 
-      if validate_response(s):
-        return {'co2': s[2]*256 + s[3]}
+      if p_ver == '2':
+        if len(s) >= 4 and s[0] == "\xff" and s[1] == "\x86" and checksum(s[1:-1]) == s[-1]:
+          return {'co2': ord(s[2])*256 + ord(s[3])}
+      else:
+        if len(s) >= 4 and s[0] == 0xff and s[1] == 0x86 and ord(checksum(s[1:-1])) == s[-1]:
+          return {'co2': s[2]*256 + s[3]}
   except:
      traceback.print_exc()
   return {}
@@ -92,15 +96,25 @@ def read_all(serial_console_untouched=False):
     ser = connect_serial()
     for retry in range(retry_count):
       result=ser.write(b"\xff\x01\x86\x00\x00\x00\x00\x00\x79")
-      s=convert_response(ser.read(9))
+      s=ser.read(9)
 
-      if validate_response(s):
-        return {'co2': s[2]*256 + s[3],
-                'temperature': s[4] - 40,
-                'TT': s[4],
-                'SS': s[5],
-                'UhUl': s[6]*256 + s[7]
-                }
+      if p_ver == '2':
+        if len(s) >= 9 and s[0] == "\xff" and s[1] == "\x86" and checksum(s[1:-1]) == s[-1]:
+          return {'co2': ord(s[2])*256 + ord(s[3]),
+                  'temperature': ord(s[4]) - 40,
+                  'TT': ord(s[4]),
+                  'SS': ord(s[5]),
+                  'UhUl': ord(s[6])*256 + ord(s[7])
+                  }
+        break
+      else:
+        if len(s) >= 9 and s[0] == 0xff and s[1] == 0x86 and ord(checksum(s[1:-1])) == s[-1]:
+          return {'co2': s[2]*256 + s[3],
+                  'temperature': s[4] - 40,
+                  'TT': s[4],
+                  'SS': s[5],
+                  'UhUl': s[6]*256 + s[7]
+                  }
   except:
      traceback.print_exc()
 
@@ -212,17 +226,6 @@ def read_from_pwm(gpio=12, range=5000):
   return {'co2': int(falling -rising - CYCLE_START_HIGHT_TIME) / 2 *(range/500)}
 
 def checksum(array):
+  if p_ver == '2':
+    array = [ord(c) for c in array]
   return struct.pack('B', 0xff - (sum(array) % 0x100) + 1)
-
-def convert_response(response):
-  result = response
-  if p_ver == "2":
-    result = [ord(c) for c in response]
-  return result
-
-def validate_response(response):
-  result = False
-  if len(response) == 9 and response[0] == 0xFF:
-    csum = ord(checksum(response[1:8]))
-    result = csum == response[8]
-  return result
