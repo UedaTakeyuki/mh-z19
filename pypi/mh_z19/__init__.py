@@ -18,6 +18,7 @@ import RPi.GPIO as GPIO
 version = "3.0.2"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
+retry_count    = 3
 
 # exception
 class GPIO_Edge_Timeout(Exception):
@@ -64,20 +65,15 @@ def connect_serial():
 def mh_z19():
   try:
     ser = connect_serial()
-    while 1:
+    for retry in range(retry_count):
       result=ser.write(b"\xff\x01\x86\x00\x00\x00\x00\x00\x79")
-      s=ser.read(9)
+      s=convert_telegram(ser.read(9))
 
-      if p_ver == '2':
-        if len(s) >= 4 and s[0] == "\xff" and s[1] == "\x86":
-          return {'co2': ord(s[2])*256 + ord(s[3])}
-        break
-      else:
-        if len(s) >= 4 and s[0] == 0xff and s[1] == 0x86:
-          return {'co2': s[2]*256 + s[3]}
-        break
+      if validate_telegram(s, 0x86):
+        return {'co2': s[2]*256 + s[3]}
   except:
      traceback.print_exc()
+  return {}
 
 def read(serial_console_untouched=False):
   if not serial_console_untouched:
@@ -87,43 +83,30 @@ def read(serial_console_untouched=False):
 
   if not serial_console_untouched:
     start_getty()
-  if result is not None:
-    return result
+  return result
 
 def read_all(serial_console_untouched=False):
   if not serial_console_untouched:
     stop_getty()
   try:
     ser = connect_serial()
-    while 1:
+    for retry in range(retry_count):
       result=ser.write(b"\xff\x01\x86\x00\x00\x00\x00\x00\x79")
-      s=ser.read(9)
+      s=convert_telegram(ser.read(9))
 
-      if p_ver == '2':
-        if len(s) >= 9 and s[0] == "\xff" and s[1] == "\x86":
-          return {'co2': ord(s[2])*256 + ord(s[3]),
-                  'temperature': ord(s[4]) - 40,
-                  'TT': ord(s[4]),
-                  'SS': ord(s[5]),
-                  'UhUl': ord(s[6])*256 + ord(s[7])
-                  }
-        break
-      else:
-        if len(s) >= 9 and s[0] == 0xff and s[1] == 0x86:
-          return {'co2': s[2]*256 + s[3],
-                  'temperature': s[4] - 40,
-                  'TT': s[4],
-                  'SS': s[5],
-                  'UhUl': s[6]*256 + s[7]
-                  }
-        break
+      if validate_telegram(s, 0x86):
+        return {'co2': s[2]*256 + s[3],
+                'temperature': s[4] - 40,
+                'TT': s[4],
+                'SS': s[5],
+                'UhUl': s[6]*256 + s[7]
+                }
   except:
      traceback.print_exc()
 
   if not serial_console_untouched:
     start_getty()
-  if result is not None:
-    return result
+  return {}
 
 def abc_on(serial_console_untouched=False):
   if not serial_console_untouched:
@@ -230,3 +213,18 @@ def read_from_pwm(gpio=12, range=5000):
 
 def checksum(array):
   return struct.pack('B', 0xff - (sum(array) % 0x100) + 1)
+
+def convert_telegram(telegram):
+  result = telegram
+  if p_ver == "2":
+    result = [ord(c) for c in telegram]
+  return result
+
+def validate_telegram(telegram, command):
+  result = False
+  if len(telegram) == 9 and telegram[0] == 0xFF and telegram[1] == command:
+    csum = ord(checksum(telegram[1:8]))
+    result = csum == telegram[8]
+  else:
+    print(telegram)
+  return result
