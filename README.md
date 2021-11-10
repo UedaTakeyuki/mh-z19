@@ -56,8 +56,6 @@ Full Set include followings:
 
 Install Full Set, download from [release](https://github.com/UedaTakeyuki/mh-z19/releases)
 
-or 
-
 ```
 git clone https://github.com/UedaTakeyuki/mh-z19.git
 ```
@@ -73,12 +71,24 @@ Necessary settings including serial port enabling are taken place in this script
 
 When using python 2.x
 ```bash:
-pip install mh-z19
+sudo pip install mh_z19
 ```
+
+In case you would use it [witout root permission](#how-to-use-without-root-permission)
+```bash:
+pip install mh_z19
+```
+
+ 
 
 When using python 3.x
 ```bash:
-pip3 install mh-z19
+sudo pip3 install mh_z19
+```
+
+In case you would use it [witout root permission](#how-to-use-without-root-permission)
+```bash:
+pip3 install mh_z19
 ```
 
 The differences of the interface between each Raspberry Pi model are resolved inside this module. For example, serial device name is difference between Raspberry Pi 3 and older model, but mh-z19 module automatically detect the model and read from appropriate serial device.
@@ -273,3 +283,4 @@ The forum is avai at [here](https://groups.google.com/g/mh_z19-users). Any quest
 - 3.0.1 2021.02.17 Fix a degradation of not running with python3. Thank you **Masahiko OHKUBO** san for your report.
 - 3.0.2 2021.03.25 Fix to support RPi4 correctly as [issue#29](https://github.com/UedaTakeyuki/mh-z19/issues/29). Thanks [iperniaf](https://github.com/iperniaf)!
 - 3.0.3 2021.11.08 Fix [issue#35](https://github.com/UedaTakeyuki/mh-z19/issues/35). Thanks [false](https://github.com/false-git)!
+- 3.0.4 2011.11.11 Fix [issue#36](https://github.com/UedaTakeyuki/mh-z19/issues/36). Thanks [David Bock](https://github.com/DavidBock)
