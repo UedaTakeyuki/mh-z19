@@ -69,27 +69,27 @@ Necessary settings including serial port enabling are taken place in this script
 
 ### Install only sensor module
 
-When using python 2.x
+For python 2.x
 ```bash:
 sudo pip install mh_z19
 ```
 
-In case you would use it [witout root permission](#how-to-use-without-root-permission)
-```bash:
-pip install mh_z19
-```
-
- 
-
-When using python 3.x
+For python 3.x
 ```bash:
 sudo pip3 install mh_z19
 ```
 
-In case you would use it [witout root permission](#how-to-use-without-root-permission)
+In case you would use it [witout root permission](#how-to-use-without-root-permission), call pip without sudo as follows:
+
+For python 2.x
+```bash:
+pip install mh_z19
+```
+
+For python 3.x
 ```bash:
 pip3 install mh_z19
-```
+``` 
 
 The differences of the interface between each Raspberry Pi model are resolved inside this module. For example, serial device name is difference between Raspberry Pi 3 and older model, but mh-z19 module automatically detect the model and read from appropriate serial device.
 
