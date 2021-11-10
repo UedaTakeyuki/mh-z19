@@ -177,7 +177,7 @@ You can set it by autostart.sh command in the mh_z19 installed directory as foll
 ./autostart.sh --on
 ```
 
-You can tTurn off this as follows:
+You can turn off this as follows:
 
 ```
 ./autostart.sh --off
