@@ -18,7 +18,7 @@ import os.path
 import RPi.GPIO as GPIO
 
 # setting
-version = "3.0.3"
+version = "3.0.5"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 retry_count    = 3
@@ -227,7 +227,11 @@ def read_from_pwm(gpio=12, range=5000):
 def checksum(array):
   if p_ver == '2' and isinstance(array, str):
     array = [ord(c) for c in array]
-  return struct.pack('B', 0xff - (sum(array) % 0x100) + 1)
+  csum = sum(array) % 0x100
+  if csum == 0:
+    return struct.pack('B', 0)
+  else:
+    return struct.pack('B', 0xff - csum + 1)
 
 if __name__ == '__main__':
 #  value = read()

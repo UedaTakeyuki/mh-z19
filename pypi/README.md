@@ -5,7 +5,7 @@ Read CO2 concentration from mh-z19 sensor
 
 ## install
 ```
-pip install mh-z19
+pip install mh_z19
 ```
 ## installs
 [![Downloads](https://pepy.tech/badge/mh-z19)](https://pepy.tech/project/mh-z19)
@@ -171,3 +171,5 @@ The forum is avai at [here](https://groups.google.com/g/mh_z19-users). Any quest
 - 3.0.1 2021.02.17 Fix a degradation of not running with python3. Thank you **Masahiko OHKUBO** san for your report.
 - 3.0.2 2021.03.25 Fix to support RPi4 correctly as [issue#29](https://github.com/UedaTakeyuki/mh-z19/issues/29). Thanks [iperniaf](https://github.com/iperniaf)!
 - 3.0.3 2021.11.08 Fix [issue#35](https://github.com/UedaTakeyuki/mh-z19/issues/35). Thanks [false](https://github.com/false-git)!
+- 3.0.4 2011.11.11 Fix [issue#36](https://github.com/UedaTakeyuki/mh-z19/issues/36). Thanks [David Bock](https://github.com/DavidBock)
+- 3.0.5 2022.01.01 Fix [issue#38](https://github.com/UedaTakeyuki/mh-z19/issues/38). Thanks [kzehnter](https://github.com/kzehnter)!
