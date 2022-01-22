@@ -28,6 +28,9 @@ group.add_argument("--version",
 group.add_argument("--all",
                     action='store_true',
                     help='''return all (co2, temperature, TT, SS and UhUl) as json''')
+group.add_argument("--co2valueonly",
+                    action='store_true',
+                    help='''return co2 value alone, as unlabeled string''')
 group.add_argument("--abc_on",
                     action='store_true',
                     help='''Set ABC functionality on model B as ON.''')
@@ -104,6 +107,9 @@ elif args.version:
 elif args.all:
   value = mh_z19.read_all(args.serial_console_untouched)
   print (json.dumps(value))
+elif args.co2valueonly:
+  value = mh_z19.read_co2valueonly(args.serial_console_untouched)
+  print (value)
 else:
   value = mh_z19.read(args.serial_console_untouched)
   print (json.dumps(value))

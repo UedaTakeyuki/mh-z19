@@ -173,3 +173,4 @@ The forum is avai at [here](https://groups.google.com/g/mh_z19-users). Any quest
 - 3.0.3 2021.11.08 Fix [issue#35](https://github.com/UedaTakeyuki/mh-z19/issues/35). Thanks [false](https://github.com/false-git)!
 - 3.0.4 2011.11.11 Fix [issue#36](https://github.com/UedaTakeyuki/mh-z19/issues/36). Thanks [David Bock](https://github.com/DavidBock)
 - 3.0.5 2022.01.01 Fix [issue#38](https://github.com/UedaTakeyuki/mh-z19/issues/38). Thanks [kzehnter](https://github.com/kzehnter)!
+- 3.1.0 2022.01.22 add ``--co2valueonly`` option by merging [issue#39](https://github.com/UedaTakeyuki/mh-z19/issues/39) and [issue#40](https://github.com/UedaTakeyuki/mh-z19/issues/40). Thanks [jonesthefox](https://github.com/jonesthefox)!
