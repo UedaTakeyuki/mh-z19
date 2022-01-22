@@ -121,6 +121,28 @@ def read_all(serial_console_untouched=False):
     start_getty()
   return {}
 
+def read_co2valueonly(serial_console_untouched=False):
+  if not serial_console_untouched:
+    stop_getty()
+  try:
+    ser = connect_serial()
+    for retry in range(retry_count):
+      result=ser.write(b"\xff\x01\x86\x00\x00\x00\x00\x00\x79")
+      s=ser.read(9)
+
+      if p_ver == '2':
+        if len(s) >= 4 and s[0] == "\xff" and s[1] == "\x86" and checksum(s[1:-1]) == s[-1]:
+          return ord(s[2])*256 + ord(s[3])
+      else:
+        if len(s) >= 4 and s[0] == 0xff and s[1] == 0x86 and ord(checksum(s[1:-1])) == s[-1]:
+          return s[2]*256 + s[3]
+  except:
+     traceback.print_exc()
+     
+  if not serial_console_untouched:
+    start_getty()
+  return {}
+
 def abc_on(serial_console_untouched=False):
   if not serial_console_untouched:
     stop_getty()
@@ -256,6 +278,9 @@ if __name__ == '__main__':
   group.add_argument("--all",
                       action='store_true',
                       help='''return all (co2, temperature, TT, SS and UhUl) as json''')
+  group.add_argument("--co2valueonly",
+                      action='store_true',
+                      help='''return co2 value alone, as unlabeled string''')
   group.add_argument("--abc_on",
                       action='store_true',
                       help='''Set ABC functionality on model B as ON.''')
@@ -330,6 +355,9 @@ if __name__ == '__main__':
   elif args.all:
     value = read_all(args.serial_console_untouched)
     print (json.dumps(value))
+  elif args.co2valueonly:
+    value = read_co2valueonly(args.serial_console_untouched)
+    print (value)
   else:
     value = read(args.serial_console_untouched)
     print (json.dumps(value))
