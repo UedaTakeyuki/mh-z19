@@ -18,7 +18,7 @@ import os.path
 import RPi.GPIO as GPIO
 
 # setting
-version = "3.1.0"
+version = "3.1.1"
 pimodel        = getrpimodel.model
 pimodel_strict = getrpimodel.model_strict()
 retry_count    = 3
@@ -61,7 +61,7 @@ def connect_serial():
                         stopbits=serial.STOPBITS_ONE,
                         timeout=1.0)
 
-def mh_z19():
+def read_concentration():
   try:
     ser = connect_serial()
     for retry in range(retry_count):
@@ -70,19 +70,36 @@ def mh_z19():
 
       if p_ver == '2':
         if len(s) >= 4 and s[0] == "\xff" and s[1] == "\x86" and checksum(s[1:-1]) == s[-1]:
-          return {'co2': ord(s[2])*256 + ord(s[3])}
+          return ord(s[2])*256 + ord(s[3])
       else:
         if len(s) >= 4 and s[0] == 0xff and s[1] == 0x86 and ord(checksum(s[1:-1])) == s[-1]:
-          return {'co2': s[2]*256 + s[3]}
+          return s[2]*256 + s[3]
   except:
      traceback.print_exc()
-  return {}
+  return ""
+
+def mh_z19():
+  co2 = read_concentration()
+  if not co2:
+    return {}
+  else:
+    return {'co2': co2}
 
 def read(serial_console_untouched=False):
   if not serial_console_untouched:
     stop_getty()
 
   result = mh_z19()
+
+  if not serial_console_untouched:
+    start_getty()
+  return result
+
+def read_co2valueonly(serial_console_untouched=False):
+  if not serial_console_untouched:
+    stop_getty()
+
+  result = read_concentration()
 
   if not serial_console_untouched:
     start_getty()
@@ -117,28 +134,6 @@ def read_all(serial_console_untouched=False):
   except:
      traceback.print_exc()
 
-  if not serial_console_untouched:
-    start_getty()
-  return {}
-
-def read_co2valueonly(serial_console_untouched=False):
-  if not serial_console_untouched:
-    stop_getty()
-  try:
-    ser = connect_serial()
-    for retry in range(retry_count):
-      result=ser.write(b"\xff\x01\x86\x00\x00\x00\x00\x00\x79")
-      s=ser.read(9)
-
-      if p_ver == '2':
-        if len(s) >= 4 and s[0] == "\xff" and s[1] == "\x86" and checksum(s[1:-1]) == s[-1]:
-          return ord(s[2])*256 + ord(s[3])
-      else:
-        if len(s) >= 4 and s[0] == 0xff and s[1] == 0x86 and ord(checksum(s[1:-1])) == s[-1]:
-          return s[2]*256 + s[3]
-  except:
-     traceback.print_exc()
-     
   if not serial_console_untouched:
     start_getty()
   return {}
