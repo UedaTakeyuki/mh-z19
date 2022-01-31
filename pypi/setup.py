@@ -1,12 +1,17 @@
 from setuptools import setup
+import platform
 
-with open("README.md", encoding='utf8') as f:
-  long_description = f.read()
+if platform.python_version_tuple()[0] == '2':
+  with open("README.md") as f:
+    long_description = f.read()
+else:
+  with open("README.md", encoding='utf8') as f:
+    long_description = f.read()
 
 setup(
   name = 'mh_z19',
   packages = ['mh_z19'], # this must be the same as the name above
-  version = '3.1.1',
+  version = '3.1.2',
   description = 'mh-z19 CO2 concentration sensor library for All models of Raspberry Pi',
   long_description=long_description,
   long_description_content_type="text/markdown",
