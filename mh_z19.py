@@ -18,7 +18,7 @@ import os.path
 import RPi.GPIO as GPIO
 
 # setting
-version = "3.1.2"
+version = "3.1.3"
 pimodel        = getrpimodel.model()
 pimodel_strict = getrpimodel.model_strict()
 retry_count    = 3
