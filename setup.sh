@@ -1,6 +1,9 @@
-sudo apt-get install python-pip python3-pip git-core
-sudo pip install mh_z19 pondslider incremental_counter error_counter
-sudo pip3 install mh_z19 pondslider incremental_counter error_counter
+sudo apt-get install python3-pip git-core
+sudo pip3 install mh_z19 pondslider incremental_counter error_counter --break-system-packages
+if [ ${cat /etc/debian_version} -lt 11 ] ; then
+  sudo apt-get install python-pip
+  sudo pip install mh_z19 pondslider incremental_counter error_counter
+fi
 git clone https://github.com/UedaTakeyuki/handlers
 ln -s handlers/value/sender/send2monitor/send2monitor.py
 sudo sed -i "s/^enable_uart=.*/enable_uart=1/" /boot/config.txt

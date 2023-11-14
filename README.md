@@ -99,7 +99,7 @@ Also, please refer [PyPi top page](https://pypi.org/project/mh-z19/) for detail.
 
 ## read CO2 Sensor value
 ```
-pi@raspberrypi:~ $ sudo python -m mh_z19 
+pi@raspberrypi:~ $ sudo python3 -m mh_z19 
 {'co2': 668}
 ```
 
@@ -289,3 +289,4 @@ The forum is avai at [here](https://groups.google.com/g/mh_z19-users). Any quest
 - 3.1.1 2022.01.23 remove code clone.
 - 3.1.2 2022.01.31 Fix [issue#41](https://github.com/UedaTakeyuki/mh-z19/issues/41). Thanks [Christopher M. Pierce](https://github.com/electronsandstuff)!
 - 3.1.3 2022.02.25 Fix [issue#43](https://github.com/UedaTakeyuki/mh-z19/issues/43). Thanks [Jannis Möller](https://github.com/jannismoeller)!
+- 3.1.4 2023.11.14 Don't install python2-pip if OS version is BullsEye or later.
