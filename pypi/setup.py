@@ -30,6 +30,7 @@ setup(
     'requests',
     'argparse',
     'RPi.GPIO',
-    'gpiozero'
+    'gpiozero',
+    'lgpio'
   ]
 )
