@@ -177,3 +177,4 @@ The forum is avai at [here](https://groups.google.com/g/mh_z19-users). Any quest
 - 3.1.1 2022.01.23 remove code clone.
 - 3.1.2 2022.01.31 Fix [issue#41](https://github.com/UedaTakeyuki/mh-z19/issues/41). Thanks [Christopher M. Pierce](https://github.com/electronsandstuff)!
 - 3.1.3 2022.02.25 Fix [issue#43](https://github.com/UedaTakeyuki/mh-z19/issues/43). Thanks [Jannis Möller](https://github.com/jannismoeller)!
+- 3.1.5 2024.05.06 FIx [issue#53](https://github.com/UedaTakeyuki/mh-z19/issues/53). Thanks [Tats Shibata](https://github.com/rewse)

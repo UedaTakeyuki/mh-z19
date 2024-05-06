@@ -4,7 +4,6 @@
 # © Takeyuki UEDA 2015 -
 
 import serial
-import time
 import subprocess
 import traceback
 import getrpimodel
@@ -12,17 +11,14 @@ import struct
 import platform
 import os.path
 
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
+import mh_z19.pwm as pwm
 
 # setting
-version = "3.1.3"
+version = "3.1.5"
 pimodel        = getrpimodel.model()
 pimodel_strict = getrpimodel.model_strict()
 retry_count    = 3
-
-# exception
-class GPIO_Edge_Timeout(Exception):
-  pass
 
 if os.path.exists('/dev/serial0'):
   partial_serial_dev = 'serial0'
@@ -215,6 +211,11 @@ def detection_range_2000(serial_console_untouched=False):
     start_getty()
 
 def read_from_pwm(gpio=12, range=5000):
+#  if pimodel == "5":
+    return pwm.read_from_pwm_with_gpiozero(gpio=12, range=5000)
+#  else:
+#    return pwm.read_from_pwm_with_gpio(gpio=12, range=5000)
+'''
   CYCLE_START_HIGHT_TIME = 2
   TIMEOUT = 2000 # must be larger than PWM cycle time.
 
@@ -241,6 +242,7 @@ def read_from_pwm(gpio=12, range=5000):
     falling = time.time() * 1000
 
   return {'co2': int(falling -rising - CYCLE_START_HIGHT_TIME) / 2 *(range/500)}
+'''
 
 def checksum(array):
   if p_ver == '2' and isinstance(array, str):

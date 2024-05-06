@@ -11,7 +11,7 @@ else:
 setup(
   name = 'mh_z19',
   packages = ['mh_z19'], # this must be the same as the name above
-  version = '3.1.3',
+  version = '3.1.5',
   description = 'mh-z19 CO2 concentration sensor library for All models of Raspberry Pi',
   long_description=long_description,
   long_description_content_type="text/markdown",
@@ -29,6 +29,7 @@ setup(
     'pyserial',
     'requests',
     'argparse',
-    'RPi.GPIO'
+    'RPi.GPIO',
+    'gpiozero'
   ]
 )
