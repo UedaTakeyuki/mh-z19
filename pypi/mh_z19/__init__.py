@@ -15,17 +15,20 @@ import os.path
 import mh_z19.pwm as pwm
 
 # setting
-version = "3.1.5"
+version = "3.1.6"
 pimodel        = getrpimodel.model()
 pimodel_strict = getrpimodel.model_strict()
 retry_count    = 3
 
-if os.path.exists('/dev/serial0'):
-  partial_serial_dev = 'serial0'
-elif pimodel == "3 Model B" or pimodel == "4 Model B" or pimodel_strict == "Zero W":
-  partial_serial_dev = 'ttyS0'
-else:
+if pimodel == "5":
   partial_serial_dev = 'ttyAMA0'
+else:
+  if os.path.exists('/dev/serial0'):
+    partial_serial_dev = 'serial0'
+  elif pimodel == "3 Model B" or pimodel == "4 Model B" or pimodel_strict == "Zero W":
+    partial_serial_dev = 'ttyS0'
+  else:
+    partial_serial_dev = 'ttyAMA0'
   
 serial_dev = '/dev/%s' % partial_serial_dev
 #stop_getty = 'sudo systemctl stop serial-getty@%s.service' % partial_serial_dev
