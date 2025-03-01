@@ -3,13 +3,14 @@
 # © Takeyuki UEDA 2024 -
 import time
 
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
 from gpiozero import Button
 
 # exception
 class GPIO_Edge_Timeout(Exception):
   pass
 
+'''
 def read_from_pwm_with_gpio(gpio=12, range=5000):
   CYCLE_START_HIGHT_TIME = 2
   TIMEOUT = 2000 # must be larger than PWM cycle time.
@@ -37,6 +38,7 @@ def read_from_pwm_with_gpio(gpio=12, range=5000):
     falling = time.time() * 1000
 
   return {'co2': int(falling -rising - CYCLE_START_HIGHT_TIME) / 2 *(range/500)}
+'''
 
 # refer https://gpiozero.readthedocs.io/en/latest/migrating_from_rpigpio.html#input-devices
 def read_from_pwm_with_gpiozero(gpio=12, range=5000):
