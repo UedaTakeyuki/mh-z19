@@ -19,7 +19,7 @@ import os.path
 from gpiozero import Button
 
 # setting
-version = "3.1.6"
+version = "3.1.7"
 pimodel        = getrpimodel.model()
 pimodel_strict = getrpimodel.model_strict()
 retry_count    = 3

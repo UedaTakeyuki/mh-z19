@@ -292,3 +292,4 @@ The forum is avai at [here](https://groups.google.com/g/mh_z19-users). Any quest
 - 3.1.4 2023.11.14 Don't install python2-pip if OS version is BullsEye or later.
 - 3.1.5 2024.05.06 FIx [issue#53](https://github.com/UedaTakeyuki/mh-z19/issues/53). Thanks [Tats Shibata](https://github.com/rewse)
 - 3.1.6 2024.08.29 FIx [issue#54](https://github.com/UedaTakeyuki/mh-z19/issues/54). Thanks [80kpc](https://github.com/ziyucao)
+- 3.1.7 2025.03.01 drop the RPi.GPIO dependenc. Thanks [mroelandts](https://github.com/mroelandts)
