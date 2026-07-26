@@ -1,7 +1,7 @@
 # mh-z19
 Read CO<sub>2</sub> concentration from mh-z19 sensor and handle it.
 
-![MH-Z19]([https://camo.qiitausercontent.com/a270df1162ed5c3bf9968b24064b91eed0dfcc11/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e616d617a6f6e6177732e636f6d2f302f34363534342f31353739663964622d306634302d373665382d303566332d3939336132346334376431382e706e67](https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F46544%2F1579f9db-0f40-76e8-05f3-993a24c47d18.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=09feb8bc9300e5abcb64eb760d86408d))
+![MH-Z19](https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F46544%2F1579f9db-0f40-76e8-05f3-993a24c47d18.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=09feb8bc9300e5abcb64eb760d86408d)
 
 ## cabling
 Connect RPi & mh-z19 as:
