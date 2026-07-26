@@ -117,7 +117,7 @@ As an example, we introduce following use case:
 ### A brief explanation of pondslider
 The pondslider read sensorvalue by ***sensor-handler*** specified, and pass the values to ***value-handlers**** which do something with it.
 
-![PondSlider](https://warehouse-camo.cmh1.psfhosted.org/4a74a04ed15e93c05a7c126b59459d98738a62d9/68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f5565646154616b6579756b692f706f6e64736c696465722f6d61737465722f706963732f73732e323031382d31312d30332e31332e35362e31312e706e67)
+![PondSlider](https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F46544%2F8df8953c-65c9-cef8-6bcf-a0bcb0a41d5e.png?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&w=1400&fit=max&s=8771990b266d9f5fb88500997e4ef966)
 
 Both sensor and value handlers are python module. For more detail of handlers, please refer [this](https://github.com/UedaTakeyuki/pondslider).
 
